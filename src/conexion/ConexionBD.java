@@ -20,7 +20,6 @@ public class ConexionBD {
             );
 
             System.out.println("Conexion exitosa con Supabase");
-
             return conexion;
 
         } catch (SQLException e) {
