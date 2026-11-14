@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConexionBD {
 
-    private static final String URL = "jdbc:postgresql://aws-0-us-east-2.pooler.supabase.com:5432/postgres?user=postgres.affobcpntqbxcxxodvtn&password=[YOUR-PASSWORD]";
+    private static final String URL = "jdbc:postgresql://aws-0-us-east-2.pooler.supabase.com:5432/postgres?user=postgres.affobcpntqbxcxxodvtn&password=--2Biblioteca2--";
     private static final String USUARIO = "postgres.affobcpntqbxcxxodvtn";
-    private static final String CONTRASENA = "";
+    private static final String CONTRASENA = "--2Biblioteca2--";
 
     public static Connection obtenerConexion() {
 
