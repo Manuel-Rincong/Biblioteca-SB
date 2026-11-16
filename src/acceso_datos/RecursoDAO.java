@@ -1,0 +1,176 @@
+
+package acceso_datos;
+
+import conexion.ConexionBD;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.util.ArrayList;
+import modelo.Recurso;
+
+public class RecursoDAO {
+    
+    public boolean eliminar(long idRecurso){
+        
+        String sql = "DELETE FROM recurso WHERE id_recurso = ?";
+        
+        Connection conexion = ConexionBD.obtenerConexion();
+        
+        if (conexion == null){
+            return false;
+        }
+        
+        try(conexion;
+            PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setLong(1, idRecurso);
+            
+            return sentencia.executeUpdate() > 0;
+            
+        }catch(SQLException e){
+            System.out.println("Error al intentar eliminar el recurso: "+e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean actualizar(Recurso recurso){
+        
+        String sql = "UPDATE recurso SET identificador = ?, nombre = ?, id_tipo_recurso = ?, descripcion = ?, disponible = ?, activo = ? WHERE id_recurso = ?";
+        
+        Connection conexion = ConexionBD.obtenerConexion();
+        
+        if(conexion == null){
+            return false;
+        }
+        
+        try(conexion;
+            PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setString(1, recurso.getIdentificador());
+            sentencia.setString(2, recurso.getNombre());
+            sentencia.setLong(3, recurso.getIdTipoRecurso());
+            sentencia.setString(4, recurso.getDescripcion());
+            sentencia.setBoolean(5, recurso.isDisponible());
+            sentencia.setBoolean(6, recurso.isActivo());
+            sentencia.setLong(7, recurso.getIdRecurso());
+            
+            return sentencia.executeUpdate() > 0;
+            
+        }catch(SQLException e){
+            System.out.println("Error al intentar actualizar el recurso: "+e.getMessage());
+            return false;
+        }
+        
+    }
+    
+    public ArrayList<Recurso> listarTodos(){
+        
+        String sql = "SELECT * FROM recurso";
+        
+        Connection conexion = ConexionBD.obtenerConexion();
+        
+        if(conexion == null){
+            return null;
+        }
+        
+        try(conexion;
+            PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            ResultSet resultado = sentencia.executeQuery();
+            
+            ArrayList<Recurso> recursos = new ArrayList<>();
+            
+            while(resultado.next()){
+                long id = resultado.getLong("id_recurso");
+                String identificador = resultado.getString("identificador");
+                String nombre = resultado.getString("nombre");
+                long idTipoRecurso = resultado.getLong("id_tipo_recurso");
+                String descripcion = resultado.getString("descripcion");
+                boolean disponible = resultado.getBoolean("disponible");
+                boolean activo = resultado.getBoolean("activo");
+                
+                Recurso consulta = new Recurso(identificador, nombre, idTipoRecurso, descripcion);
+                consulta.setIdRecurso(id);
+                consulta.setDisponible(disponible);
+                consulta.setActivo(activo);
+                
+                recursos.add(consulta);
+            }
+            
+            return recursos;
+            
+        }catch(SQLException e){
+            System.out.println("Error al intentar consultar los recursos: "+e.getMessage());
+            return null;
+        }
+    }
+    
+    public Recurso buscarPorId(long idRecurso){
+        
+        String sql = "SELECT * FROM recurso WHERE id_recurso = ?";
+        
+        Connection conexion = ConexionBD.obtenerConexion();
+        
+        if(conexion == null){
+            return null;
+        }
+        
+        try(conexion;
+            PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setLong(1, idRecurso);
+            
+            ResultSet resultado = sentencia.executeQuery();
+            
+            if(resultado.next()){
+                long id = resultado.getLong("id_recurso");
+                String identificador = resultado.getString("identificador");
+                String nombre = resultado.getString("nombre");
+                long idTipoRecurso = resultado.getLong("id_tipo_recurso");
+                String descripcion = resultado.getString("descripcion");
+                boolean disponible = resultado.getBoolean("disponible");
+                boolean activo = resultado.getBoolean("activo");
+                
+                Recurso consulta = new Recurso(identificador, nombre, idTipoRecurso, descripcion);
+                consulta.setIdRecurso(id);
+                consulta.setDisponible(disponible);
+                consulta.setActivo(activo);
+                
+                return consulta;
+            }
+            
+            return null;
+            
+        }catch(SQLException e){
+            System.out.println("Error al intentar buscar los recursos: "+e.getMessage());
+            return null;
+        }
+    }
+    
+    public boolean registrar(Recurso recurso){
+        
+        String sql = "INSERT INTO recurso (identificador, nombre, id_tipo_recurso, descripcion) VALUES (?, ?, ?, ?)";
+        
+        Connection conexion = ConexionBD.obtenerConexion();
+        
+        if(conexion == null){
+            return false;
+        }
+        
+        try(conexion;
+            PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setString(1, recurso.getIdentificador());
+            sentencia.setString(2, recurso.getNombre());
+            sentencia.setLong(3, recurso.getIdTipoRecurso());
+            sentencia.setString(4, recurso.getDescripcion());
+            
+            return sentencia.executeUpdate() > 0;
+            
+        }catch(SQLException e){
+            System.out.println("Error al intentar registrar los datos de recurso: "+e.getMessage());
+            return false;
+        }
+    }
+}
