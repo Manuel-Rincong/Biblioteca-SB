@@ -126,7 +126,7 @@ public class ListaEsperaDAO {
             return listasEspera;
             
         }catch(SQLException e){
-            System.out.println("Error al buscar lista de espera por recurso: "+e.getMessage());
+            System.out.println("Error al listar por el id de recurso la lista de espera: "+e.getMessage());
             return null;
         }
     }

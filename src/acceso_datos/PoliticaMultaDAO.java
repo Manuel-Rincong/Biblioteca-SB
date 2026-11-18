@@ -12,6 +12,22 @@ import modelo.PoliticaMulta;
 
 public class PoliticaMultaDAO {
     
+    private PoliticaMulta convertirPoliticaMulta(ResultSet resultado) throws SQLException {
+        long id = resultado.getLong("id_politica");
+        String nombre = resultado.getString("nombre");
+        BigDecimal valorDia = resultado.getBigDecimal("valor_por_dia");
+        int diasGracia = resultado.getInt("dias_gracia");
+        BigDecimal multaMax = resultado.getBigDecimal("multa_maxima");
+        boolean activa = resultado.getBoolean("activa");
+
+        PoliticaMulta politica = new PoliticaMulta(nombre, valorDia, multaMax);
+        politica.setIdPolitica(id);
+        politica.setDiasGracia(diasGracia);
+        politica.setActiva(activa);
+
+        return politica;
+    }
+    
     public PoliticaMulta buscarActiva(){
         
         String sql = "SELECT * FROM politica_multa WHERE activa = TRUE";
@@ -28,32 +44,20 @@ public class PoliticaMultaDAO {
             ResultSet resultado = sentencia.executeQuery();
             
             if(resultado.next()){
-                long id = resultado.getLong("id_politica");
-                String nombre = resultado.getString("nombre");
-                BigDecimal valorDia = resultado.getBigDecimal("valor_por_dia");
-                int diasGracia = resultado.getInt("dias_gracia");
-                BigDecimal multaMax = resultado.getBigDecimal("multa_maxima");
-                boolean activa = resultado.getBoolean("activa");
-                
-                PoliticaMulta consulta = new PoliticaMulta(nombre, valorDia, multaMax);
-                consulta.setIdPolitica(id);
-                consulta.setDiasGracia(diasGracia);
-                consulta.setActiva(activa);
-                
-                return consulta;
+                return convertirPoliticaMulta(resultado); 
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al buscar por activa la politica multa: "+e.getMessage());
+            System.out.println("Error al buscar la politica de multa por activa: "+e.getMessage());
             return null;
         }
     }
     
-    public boolean eliminar(long idPolitica){
+    public boolean desactivar(long idPolitica){
         
-        String sql = "DELETE FROM politica_multa WHERE id_politica = ?";
+        String sql = "UPDATE politica_multa SET activa = FALSE WHERE id_politica = ?";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -69,7 +73,7 @@ public class PoliticaMultaDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al eliminar la politica de multa"+e.getMessage());
+            System.out.println("Error al desactivar la politica de multa: "+e.getMessage());
             return false;
         }
         
@@ -121,25 +125,14 @@ public class PoliticaMultaDAO {
             ArrayList<PoliticaMulta> politicasM = new ArrayList<>();
             
             while(resultado.next()){
-                long id = resultado.getLong("id_politica");
-                String nombre = resultado.getString("nombre");
-                BigDecimal valorDia = resultado.getBigDecimal("valor_por_dia");
-                int diasGracia = resultado.getInt("dias_gracia");
-                BigDecimal multaMax = resultado.getBigDecimal("multa_maxima");
-                boolean activa = resultado.getBoolean("activa");
-                
-                PoliticaMulta consulta = new PoliticaMulta(nombre, valorDia, multaMax);
-                consulta.setIdPolitica(id);
-                consulta.setDiasGracia(diasGracia);
-                consulta.setActiva(activa);
-                
-                politicasM.add(consulta);
+                PoliticaMulta politica = convertirPoliticaMulta(resultado);
+                politicasM.add(politica);
             }
             
             return politicasM;
             
         }catch(SQLException e){
-            System.out.println("Error al listar politica multa: "+e.getMessage());
+            System.out.println("Error al listar todas las politicas de multa: "+e.getMessage());
             return null;
         }
         
@@ -163,25 +156,13 @@ public class PoliticaMultaDAO {
             ResultSet resultado = sentencia.executeQuery();
             
             if(resultado.next()){
-                long id = resultado.getLong("id_politica");
-                String nombre = resultado.getString("nombre");
-                BigDecimal valorDia = resultado.getBigDecimal("valor_por_dia");
-                int diasGracia = resultado.getInt("dias_gracia");
-                BigDecimal multaMax = resultado.getBigDecimal("multa_maxima");
-                boolean activa = resultado.getBoolean("activa");
-                
-                PoliticaMulta consulta = new PoliticaMulta(nombre, valorDia, multaMax);
-                consulta.setIdPolitica(id);
-                consulta.setDiasGracia(diasGracia);
-                consulta.setActiva(activa);
-                
-                return consulta;
+                return convertirPoliticaMulta(resultado); 
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al buscar por id la politica multa: "+e.getMessage());
+            System.out.println("Error al buscar las politicas de multa por el id: "+e.getMessage());
             return null;
         }
     }
@@ -207,7 +188,7 @@ public class PoliticaMultaDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al registrar datos en politica multa: "+e.getMessage());
+            System.out.println("Error al registrar los datos en politica multa: "+e.getMessage());
             return false;
         }
     }

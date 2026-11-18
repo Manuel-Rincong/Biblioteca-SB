@@ -2,7 +2,6 @@
 package acceso_datos;
 
 import conexion.ConexionBD;
-import java.time.LocalDate;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -50,7 +49,7 @@ public class NotificacionDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al marcar notificacion como leida: "+e.getMessage());
+            System.out.println("Error al marcar todas las notificaciones como leidas: "+e.getMessage());
             return false;
         }
     }
@@ -73,14 +72,14 @@ public class NotificacionDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al marcar notificacion como leida: "+e.getMessage());
+            System.out.println("Error al marcar la notificacion como leida: "+e.getMessage());
             return false;
         }
     }
     
     public  ArrayList<Notificacion> listarNoLeidas(long idUsuario){
         
-        String sql = "SELECT * FROM notificacion WHERE id_usuario = ? AND leida = 'FALSE'";
+        String sql = "SELECT * FROM notificacion WHERE id_usuario = ? AND leida = FALSE";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -105,7 +104,7 @@ public class NotificacionDAO {
             return notificaciones;
             
         }catch(SQLException e){
-            System.out.println("Error al buscar notificaciones no leidas por el usuario: "+e.getMessage());
+            System.out.println("Error al listar las notificaciones por no leidas: "+e.getMessage());
             return null;
         }
     
@@ -138,7 +137,7 @@ public class NotificacionDAO {
             return notificaciones;
             
         }catch(SQLException e){
-            System.out.println("Error al buscar notificaciones por el usuario: "+e.getMessage());
+            System.out.println("Error al listar las notificaciones por el id del usuario: "+e.getMessage());
             return null;
         }
     }

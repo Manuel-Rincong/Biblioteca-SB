@@ -11,6 +11,23 @@ import modelo.ReglaPrestamo;
 
 public class ReglaPrestamoDAO {
     
+    private ReglaPrestamo convertirReglaPrestamo(ResultSet resultado) throws SQLException {
+        long id = resultado.getLong("id_regla");
+        long idTipoUsuario = resultado.getLong("id_tipo_usuario");
+        long idTipoRecurso = resultado.getLong("id_tipo_recurso");
+        int plazoDias = resultado.getInt("plazo_dias");
+        int limitePrestamos = resultado.getInt("limite_prestamos");
+        int maxRenovaciones = resultado.getInt("max_renovaciones");
+        boolean activa = resultado.getBoolean("activa");
+
+        ReglaPrestamo regla = new ReglaPrestamo(idTipoUsuario, idTipoRecurso, plazoDias, limitePrestamos, maxRenovaciones);
+
+        regla.setIdRegla(id);
+        regla.setActiva(activa);
+
+        return regla;
+    }
+    
     public ReglaPrestamo buscarPorTipoUsuarioYRecurso(long idTipoUsuario, long idTipoRecurso){
         
         String sql = "SELECT * FROM regla_prestamo WHERE id_tipo_usuario = ? AND id_tipo_recurso = ? AND activa = TRUE";
@@ -30,32 +47,20 @@ public class ReglaPrestamoDAO {
             ResultSet resultado = sentencia.executeQuery();
             
             if(resultado.next()){
-                long id = resultado.getLong("id_regla");
-                long idTUsuario = resultado.getLong("id_tipo_usuario");
-                long idTRecurso = resultado.getLong("id_tipo_recurso");
-                int plazoDias = resultado.getInt("plazo_dias");
-                int limitePrestamos = resultado.getInt("limite_prestamos");
-                int maxRenovaciones = resultado.getInt("max_renovaciones");
-                boolean activa = resultado.getBoolean("activa");
-                
-                ReglaPrestamo consulta = new ReglaPrestamo(idTUsuario, idTRecurso, plazoDias, limitePrestamos, maxRenovaciones);
-                consulta.setIdRegla(id);
-                consulta.setActiva(activa);
-                
-                return consulta;
+                return convertirReglaPrestamo(resultado);
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al consultar la regla de prestamo: "+e.getMessage());
+            System.out.println("Error al buscar la regla de prestamo por el tipo de usuario y recurso: "+e.getMessage());
             return null;
         }
     }
     
-    public boolean eliminar(long idRegla){
+    public boolean desactivar(long idRegla){
         
-        String sql = "DELETE FROM regla_prestamo WHERE id_regla = ?";
+        String sql = "UPDATE regla_prestamo SET activa = FALSE WHERE id_regla = ?";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -71,7 +76,7 @@ public class ReglaPrestamoDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar eliminar la regla de prestamo: "+e.getMessage());
+            System.out.println("Error al desactivar la regla de prestamo: "+e.getMessage());
             return false;
         }
     }
@@ -100,7 +105,7 @@ public class ReglaPrestamoDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar actualizar las reglas de prestamo: "+e.getMessage());
+            System.out.println("Error al actualizar la regla de prestamo: "+e.getMessage());
             return false;
         }
     }
@@ -124,26 +129,14 @@ public class ReglaPrestamoDAO {
             
             
             while(resultado.next()){
-                long id = resultado.getLong("id_regla");
-                long idTipoUsuario = resultado.getLong("id_tipo_usuario");
-                long idTipoRecurso = resultado.getLong("id_tipo_recurso");
-                int plazoDias = resultado.getInt("plazo_dias");
-                int limitePrestamos = resultado.getInt("limite_prestamos");
-                int maxRenovaciones = resultado.getInt("max_renovaciones");
-                boolean activa = resultado.getBoolean("activa");
-                
-                ReglaPrestamo consulta = new ReglaPrestamo(idTipoUsuario, idTipoRecurso, plazoDias, limitePrestamos, maxRenovaciones);
-                consulta.setIdRegla(id);
-                consulta.setActiva(activa);
-                
-                reglas.add(consulta);
-                
+                ReglaPrestamo regla = convertirReglaPrestamo(resultado);
+                reglas.add(regla);
             }
             
             return reglas;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar consultar las reglas de prestamos: "+e.getMessage());
+            System.out.println("Error al listar todas las reglas de prestamos: "+e.getMessage());
             return null;
         }
     }
@@ -166,25 +159,13 @@ public class ReglaPrestamoDAO {
             ResultSet resultado = sentencia.executeQuery();
             
             if(resultado.next()){
-                long id = resultado.getLong("id_regla");
-                long idTipoUsuario = resultado.getLong("id_tipo_usuario");
-                long idTipoRecurso = resultado.getLong("id_tipo_recurso");
-                int plazoDias = resultado.getInt("plazo_dias");
-                int limitePrestamos = resultado.getInt("limite_prestamos");
-                int maxRenovaciones = resultado.getInt("max_renovaciones");
-                boolean activa = resultado.getBoolean("activa");
-                
-                ReglaPrestamo consulta = new ReglaPrestamo(idTipoUsuario, idTipoRecurso, plazoDias, limitePrestamos, maxRenovaciones);
-                consulta.setIdRegla(id);
-                consulta.setActiva(activa);
-                
-                return consulta;
+                return convertirReglaPrestamo(resultado);
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar buscar por el id de regla: "+e.getMessage());
+            System.out.println("Error al buscar la regla de prestamo por el id: "+e.getMessage());
             return null;
         }
     }
@@ -211,7 +192,7 @@ public class ReglaPrestamoDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar registar los datos de regla de prestamo: "+e.getMessage());
+            System.out.println("Error al registar los datos de regla de prestamo: "+e.getMessage());
             return false;
         }
     }

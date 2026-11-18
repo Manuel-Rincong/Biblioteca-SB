@@ -5,6 +5,7 @@ public class TipoRecurso {
     private long idTipoRecurso;
     private String nombre;
     private String descripcion;
+    private boolean activo;
 
     public TipoRecurso(String nombre) {
         this.nombre = nombre;
@@ -37,6 +38,14 @@ public class TipoRecurso {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
     
 }

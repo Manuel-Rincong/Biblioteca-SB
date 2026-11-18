@@ -12,9 +12,24 @@ import modelo.Usuario;
 
 public class UsuarioDAO {
     
-    public boolean eliminar(long idUsuario){
+    private Usuario convertirUsuario(ResultSet resultado) throws SQLException {
+        long id = resultado.getLong("id_usuario");
+        String identificacion = resultado.getString("identificacion");
+        String nombre = resultado.getString("nombre");
+        String correo = resultado.getString("correo");
+        long idTipoUsuario = resultado.getLong("id_tipo_usuario");
+        boolean activo = resultado.getBoolean("activo");
+
+        Usuario usuario = new Usuario(identificacion, nombre, correo, idTipoUsuario);
+        usuario.setIdUsuario(id);
+        usuario.setActivo(activo);
+
+        return usuario;
+    }
+    
+    public boolean desactivar(long idUsuario){
         
-        String sql = "DELETE FROM usuario WHERE id_usuario = ?";
+        String sql = "UPDATE usuario SET activo = FALSE WHERE id_usuario = ?";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -30,7 +45,7 @@ public class UsuarioDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar eliminar el usuario"+e.getMessage());
+            System.out.println("Error al desactivar el usuario: "+e.getMessage());
             return false;
         }
     }
@@ -58,7 +73,7 @@ public class UsuarioDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar actualizar el usuario: "+e.getMessage());
+            System.out.println("Error al actualizar el usuario: "+e.getMessage());
             return false;
         }
     }
@@ -81,24 +96,14 @@ public class UsuarioDAO {
             ArrayList<Usuario> usuarios = new ArrayList<>();
             
             while(resultado.next()){
-                long id = resultado.getLong("id_usuario");
-                String identificacion = resultado.getString("identificacion");
-                String nombre = resultado.getString("nombre");
-                String correo = resultado.getString("correo");
-                long idTipoUsuario = resultado.getLong("id_tipo_usuario");
-                boolean activo = resultado.getBoolean("activo");
-                
-                Usuario consulta = new Usuario(identificacion, nombre, correo, idTipoUsuario);
-                consulta.setIdUsuario(id);
-                consulta.setActivo(activo);
-                
-                usuarios.add(consulta);
+                Usuario usuario = convertirUsuario(resultado);
+                usuarios.add(usuario);
             }
             
             return usuarios;
             
         }catch(SQLException e){
-            System.out.println("Error al consultar los usuarios: "+e.getMessage());
+            System.out.println("Error al listar todos los usuarios: "+e.getMessage());
             return null;
         }
     }
@@ -121,24 +126,13 @@ public class UsuarioDAO {
             ResultSet resultado = sentencia.executeQuery();
             
             if(resultado.next()){
-                long id = resultado.getLong("id_usuario");
-                String identificacion = resultado.getString("identificacion");
-                String nombre = resultado.getString("nombre");
-                String correo = resultado.getString("correo");
-                long idTipoUsuario = resultado.getLong("id_tipo_usuario");
-                boolean activo = resultado.getBoolean("activo");
-                
-                Usuario consulta = new Usuario(identificacion, nombre, correo, idTipoUsuario);
-                consulta.setIdUsuario(id);
-                consulta.setActivo(activo);
-                
-                return consulta;
+                return convertirUsuario(resultado);
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al consultar el id del usuario: "+e.getMessage());
+            System.out.println("Error al buscar por el id del usuario: "+e.getMessage());
             return null;
         }
     }

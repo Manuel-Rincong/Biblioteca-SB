@@ -11,9 +11,22 @@ import modelo.TipoUsuario;
 
 public class TipoUsuarioDAO {
     
-    public boolean eliminar(long idTipoUsuario){
+    private TipoUsuario convertirTipoUsuario(ResultSet resultado) throws SQLException{
+        long id = resultado.getLong("id_tipo_usuario");
+        String nombre = resultado.getString("nombre");
+        int limite = resultado.getInt("limite_prestamos");
+        boolean activo = resultado.getBoolean("activo");
+                
+        TipoUsuario consulta = new TipoUsuario(nombre, limite);
+        consulta.setIdTipoUsuario(id);
+        consulta.setActivo(activo);
+                
+        return consulta;
+    }
+    
+    public boolean desactivar(long idTipoUsuario){
         
-        String sql = "DELETE FROM tipo_usuario WHERE id_tipo_usuario = ? ";
+        String sql = "UPDATE tipo_usuario SET activo = FALSE WHERE id_tipo_usuario = ?";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -29,7 +42,7 @@ public class TipoUsuarioDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar eliminar el tipo de usuario: "+e.getMessage());
+            System.out.println("Error al desactivar el tipo de usuario: "+e.getMessage());
             return false;
         }
     }
@@ -55,7 +68,7 @@ public class TipoUsuarioDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar actualizar el tipo de usuario: "+e.getMessage());
+            System.out.println("Error al actualizar el tipo de usuario: "+e.getMessage());
             return false;
         }
         
@@ -102,23 +115,14 @@ public class TipoUsuarioDAO {
             
             ResultSet resultado = sentencia.executeQuery();
             
-            if (resultado.next()){
-                long id = resultado.getLong("id_tipo_usuario");
-                String nombre = resultado.getString("nombre");
-                int limite = resultado.getInt("limite_prestamos");
-                boolean activo = resultado.getBoolean("activo");
-                
-                TipoUsuario consulta = new TipoUsuario(nombre, limite);
-                consulta.setIdTipoUsuario(id);
-                consulta.setActivo(activo);
-                
-                return consulta;
+            if (resultado.next()){          
+                return convertirTipoUsuario(resultado);
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al consultar el id del tipo de usuario: "+ e.getMessage());
+            System.out.println("Error al buscar por el id del tipo de usuario: "+ e.getMessage());
             return null;
         }
     }
@@ -138,27 +142,18 @@ public class TipoUsuarioDAO {
             
             ResultSet resultado = sentencia.executeQuery();
             
-            ArrayList<TipoUsuario> tipos = new ArrayList<>();
+            ArrayList<TipoUsuario> tipoUsuarios = new ArrayList<>();
             
             while(resultado.next()){
-                long id = resultado.getLong("id_tipo_usuario");
-                String nombre = resultado.getString("nombre");
-                int limite = resultado.getInt("limite_prestamos");
-                boolean activo = resultado.getBoolean("activo");
-                
-                TipoUsuario consulta = new TipoUsuario(nombre, limite);
-                consulta.setIdTipoUsuario(id);
-                consulta.setActivo(activo);
-                
-                tipos.add(consulta);
+                TipoUsuario tipoUsuario = convertirTipoUsuario(resultado);
+                tipoUsuarios.add(tipoUsuario);
             }
             
-            return tipos;
+            return tipoUsuarios;
             
         }catch(SQLException e){
-            System.out.println("Error al consultar los Tipos De Usuarios: "+e.getMessage());
+            System.out.println("Error al listar todos los tipos de usuarios: "+e.getMessage());
             return null;
         }
-    }
-    
+    }  
 }

@@ -13,6 +13,22 @@ import modelo.Renovacion;
 
 public class RenovacionDAO {
     
+    private Renovacion convertirRenovacion(ResultSet resultado) throws SQLException {
+        long id = resultado.getLong("id_renovacion");
+        long idPrestamo = resultado.getLong("id_prestamo");
+
+        LocalDate fechaLimiteAnterior = resultado.getDate("fecha_limite_anterior").toLocalDate();
+        LocalDate nuevaFechaLimite = resultado.getDate("nueva_fecha_limite").toLocalDate();
+        LocalDateTime fechaRenovacion = resultado.getTimestamp("fecha_renovacion").toLocalDateTime();
+
+        Renovacion renovacion = new Renovacion(idPrestamo, fechaLimiteAnterior, nuevaFechaLimite);
+
+        renovacion.setIdRenovacion(id);
+        renovacion.setFechaRenovacion(fechaRenovacion);
+
+        return renovacion;
+    }
+    
     public int contarPorPrestamo(long idPrestamo){
         
         String sql = "SELECT COUNT(*) FROM renovacion WHERE id_prestamo = ?";
@@ -37,7 +53,7 @@ public class RenovacionDAO {
             return 0;
             
         }catch(SQLException e){
-            System.out.println("Error al contar renovaciones por prestamo: "+e.getMessage());
+            System.out.println("Error al contar renovaciones por el id del prestamo: "+e.getMessage());
             return (-1);
         }
     }
@@ -62,24 +78,15 @@ public class RenovacionDAO {
             ArrayList<Renovacion> renovaciones = new ArrayList<>();
             
             while(resultado.next()){
-                long id = resultado.getLong("id_renovacion");
-                long idPrestamoConsulta = resultado.getLong("id_prestamo");
-                LocalDate fechaLimiteAnterior = resultado.getDate("fecha_limite_anterior").toLocalDate();
-                LocalDate nuevaFechaLimite = resultado.getDate("nueva_fecha_limite").toLocalDate();
-                LocalDateTime fechaRenovacion = resultado.getTimestamp("fecha_renovacion").toLocalDateTime();
-                
-                Renovacion consulta = new Renovacion(idPrestamoConsulta, fechaLimiteAnterior, nuevaFechaLimite);
-                consulta.setIdRenovacion(id);
-                consulta.setFechaRenovacion(fechaRenovacion);
-                
-                renovaciones.add(consulta);
+                Renovacion renovacion = convertirRenovacion(resultado);
+                renovaciones.add(renovacion);
             }
             
             return renovaciones;
             
             
         }catch(SQLException e){
-            System.out.println("Error al buscar renovacion por prestamo: "+e.getMessage());
+            System.out.println("Error al listar la renovacion por el id del prestamo: "+e.getMessage());
             return null;
         }
     }

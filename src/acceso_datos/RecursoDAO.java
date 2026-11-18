@@ -11,9 +11,26 @@ import modelo.Recurso;
 
 public class RecursoDAO {
     
-    public boolean eliminar(long idRecurso){
+    private Recurso convertirRecurso(ResultSet resultado) throws SQLException {
+        long id = resultado.getLong("id_recurso");
+        String identificador = resultado.getString("identificador");
+        String nombre = resultado.getString("nombre");
+        long idTipoRecurso = resultado.getLong("id_tipo_recurso");
+        String descripcion = resultado.getString("descripcion");
+        boolean disponible = resultado.getBoolean("disponible");
+        boolean activo = resultado.getBoolean("activo");
+
+        Recurso recurso = new Recurso(identificador, nombre, idTipoRecurso, descripcion);
+        recurso.setIdRecurso(id);
+        recurso.setDisponible(disponible);
+        recurso.setActivo(activo);
+
+        return recurso;
+    }
+    
+    public boolean desactivar(long idRecurso){
         
-        String sql = "DELETE FROM recurso WHERE id_recurso = ?";
+        String sql = "UPDATE recurso SET activo = FALSE WHERE id_recurso = ?";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -29,7 +46,7 @@ public class RecursoDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar eliminar el recurso: "+e.getMessage());
+            System.out.println("Error al desactivar el recurso: "+e.getMessage());
             return false;
         }
     }
@@ -58,7 +75,7 @@ public class RecursoDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar actualizar el recurso: "+e.getMessage());
+            System.out.println("Error al actualizar el recurso: "+e.getMessage());
             return false;
         }
         
@@ -82,26 +99,14 @@ public class RecursoDAO {
             ArrayList<Recurso> recursos = new ArrayList<>();
             
             while(resultado.next()){
-                long id = resultado.getLong("id_recurso");
-                String identificador = resultado.getString("identificador");
-                String nombre = resultado.getString("nombre");
-                long idTipoRecurso = resultado.getLong("id_tipo_recurso");
-                String descripcion = resultado.getString("descripcion");
-                boolean disponible = resultado.getBoolean("disponible");
-                boolean activo = resultado.getBoolean("activo");
-                
-                Recurso consulta = new Recurso(identificador, nombre, idTipoRecurso, descripcion);
-                consulta.setIdRecurso(id);
-                consulta.setDisponible(disponible);
-                consulta.setActivo(activo);
-                
-                recursos.add(consulta);
+                Recurso recurso = convertirRecurso(resultado);
+                recursos.add(recurso);
             }
             
             return recursos;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar consultar los recursos: "+e.getMessage());
+            System.out.println("Error al listar todos los recursos: "+e.getMessage());
             return null;
         }
     }
@@ -124,26 +129,13 @@ public class RecursoDAO {
             ResultSet resultado = sentencia.executeQuery();
             
             if(resultado.next()){
-                long id = resultado.getLong("id_recurso");
-                String identificador = resultado.getString("identificador");
-                String nombre = resultado.getString("nombre");
-                long idTipoRecurso = resultado.getLong("id_tipo_recurso");
-                String descripcion = resultado.getString("descripcion");
-                boolean disponible = resultado.getBoolean("disponible");
-                boolean activo = resultado.getBoolean("activo");
-                
-                Recurso consulta = new Recurso(identificador, nombre, idTipoRecurso, descripcion);
-                consulta.setIdRecurso(id);
-                consulta.setDisponible(disponible);
-                consulta.setActivo(activo);
-                
-                return consulta;
+               return convertirRecurso(resultado); 
             }
             
             return null;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar buscar los recursos: "+e.getMessage());
+            System.out.println("Error al buscar los recursos por el id: "+e.getMessage());
             return null;
         }
     }
@@ -169,7 +161,7 @@ public class RecursoDAO {
             return sentencia.executeUpdate() > 0;
             
         }catch(SQLException e){
-            System.out.println("Error al intentar registrar los datos de recurso: "+e.getMessage());
+            System.out.println("Error al registrar los datos de recurso: "+e.getMessage());
             return false;
         }
     }

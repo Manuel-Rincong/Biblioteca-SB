@@ -149,7 +149,7 @@ public class PrestamoDAO {
     
     public Prestamo buscarActivoPorRecurso(long idRecurso){
         
-        String sql = "SELECT * FROM prestamo WHERE id_recurso = ? AND estado = 'ACTIVO'";
+        String sql = "SELECT * FROM prestamo WHERE id_recurso = ? AND estado = 'ACTIVO' LIMIT 1";
         
         Connection conexion = ConexionBD.obtenerConexion();
         
@@ -235,7 +235,7 @@ public class PrestamoDAO {
             return prestamos;
             
         }catch(SQLException e){
-            System.out.println("Error al listar los prestamos del usuario: "+ e.getMessage());
+            System.out.println("Error al listar los prestamos por el id del usuario: "+ e.getMessage());
             return null;
         }
         
