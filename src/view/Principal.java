@@ -75,9 +75,10 @@ public class Principal extends javax.swing.JFrame {
         pnlOpciones.setOpaque(false);
         pnlOpciones.setLayout(new java.awt.GridLayout(4, 2, 14, 12));
 
-        btnUsuarios.setText("Usuarios");
+        btnUsuarios.setBackground(new java.awt.Color(24, 43, 66));
         btnUsuarios.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        btnUsuarios.setForeground(new java.awt.Color(24, 43, 66));
+        btnUsuarios.setForeground(new java.awt.Color(0, 255, 204));
+        btnUsuarios.setText("Usuarios");
         btnUsuarios.setFocusPainted(false);
         btnUsuarios.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnUsuarios.setMargin(new java.awt.Insets(12, 20, 12, 20));
@@ -85,9 +86,9 @@ public class Principal extends javax.swing.JFrame {
         btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
         pnlOpciones.add(btnUsuarios);
 
-        btnRecursos.setText("Libros y equipos");
+        btnRecursos.setBackground(new java.awt.Color(0, 153, 0));
         btnRecursos.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        btnRecursos.setForeground(new java.awt.Color(24, 43, 66));
+        btnRecursos.setText("Libros y equipos");
         btnRecursos.setFocusPainted(false);
         btnRecursos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRecursos.setMargin(new java.awt.Insets(12, 20, 12, 20));
@@ -184,9 +185,9 @@ public class Principal extends javax.swing.JFrame {
         pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 28, 18, 28));
         pnlPie.setLayout(new java.awt.BorderLayout(16, 0));
 
-        lblPie.setText("Libros y equipos | Estudiantes y docentes");
         lblPie.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblPie.setForeground(new java.awt.Color(61, 79, 96));
+        lblPie.setText("Libros y equipos | Estudiantes y docentes");
         pnlPie.add(lblPie, java.awt.BorderLayout.CENTER);
 
         btnSalir.setBackground(new java.awt.Color(51, 102, 255));

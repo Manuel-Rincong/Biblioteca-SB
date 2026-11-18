@@ -117,18 +117,16 @@ public class Recursos extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(980, 620));
         setPreferredSize(new java.awt.Dimension(1100, 680));
 
-        pnlEncabezado.setBackground(new java.awt.Color(24, 43, 66));
+        pnlEncabezado.setBackground(new java.awt.Color(0, 153, 0));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 26, 22, 26));
         pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 8));
 
-        lblTitulo.setText("LIBROS Y EQUIPOS");
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 25)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("LIBROS Y EQUIPOS");
         pnlEncabezado.add(lblTitulo, java.awt.BorderLayout.NORTH);
 
-        lblSubtitulo.setText("Registro y consulta de recursos | Sistema de biblioteca");
         lblSubtitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        lblSubtitulo.setForeground(new java.awt.Color(202, 223, 231));
+        lblSubtitulo.setText("Registro y consulta de recursos | Sistema de biblioteca");
         pnlEncabezado.add(lblSubtitulo, java.awt.BorderLayout.SOUTH);
 
         getContentPane().add(pnlEncabezado, java.awt.BorderLayout.NORTH);
@@ -142,9 +140,9 @@ public class Recursos extends javax.swing.JFrame {
         pnlFormulario.setPreferredSize(new java.awt.Dimension(340, 440));
         pnlFormulario.setLayout(new java.awt.BorderLayout(0, 18));
 
-        lblDatos.setText("Datos del recurso");
         lblDatos.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDatos.setForeground(new java.awt.Color(0, 113, 121));
+        lblDatos.setText("Datos del recurso");
         pnlFormulario.add(lblDatos, java.awt.BorderLayout.NORTH);
 
         pnlCampos.setOpaque(false);
@@ -229,10 +227,11 @@ public class Recursos extends javax.swing.JFrame {
         pnlAcciones.setOpaque(false);
         pnlAcciones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
 
-        btnGuardar.setText("Guardar");
+        btnGuardar.setBackground(new java.awt.Color(0, 153, 0));
         btnGuardar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnGuardar.setBackground(new java.awt.Color(0, 113, 121));
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardar.setText("Guardar");
+        btnGuardar.setToolTipText("");
         btnGuardar.setEnabled(false);
         btnGuardar.setFocusPainted(false);
         btnGuardar.setPreferredSize(new java.awt.Dimension(112, 38));
@@ -243,9 +242,9 @@ public class Recursos extends javax.swing.JFrame {
         });
         pnlAcciones.add(btnGuardar);
 
-        btnLimpiar.setText("Limpiar");
         btnLimpiar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnLimpiar.setForeground(new java.awt.Color(24, 43, 66));
+        btnLimpiar.setText("Limpiar");
         btnLimpiar.setFocusPainted(false);
         btnLimpiar.setPreferredSize(new java.awt.Dimension(112, 38));
         btnLimpiar.addActionListener(new java.awt.event.ActionListener() {
@@ -266,9 +265,9 @@ public class Recursos extends javax.swing.JFrame {
         pnlCabeceraTabla.setOpaque(false);
         pnlCabeceraTabla.setLayout(new java.awt.BorderLayout(12, 0));
 
-        lblListado.setText("Catálogo de recursos");
         lblListado.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblListado.setForeground(new java.awt.Color(0, 113, 121));
+        lblListado.setText("Catálogo de recursos");
         pnlCabeceraTabla.add(lblListado, java.awt.BorderLayout.CENTER);
 
         btnConsultar.setText("Consultar");
@@ -313,19 +312,19 @@ public class Recursos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblRecursos.setRowHeight(28);
         tblRecursos.setFillsViewportHeight(true);
-        tblRecursos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblRecursos.setGridColor(new java.awt.Color(229, 234, 239));
+        tblRecursos.setRowHeight(28);
         tblRecursos.setSelectionBackground(new java.awt.Color(218, 237, 239));
         tblRecursos.setSelectionForeground(new java.awt.Color(24, 43, 66));
-        tblRecursos.setGridColor(new java.awt.Color(229, 234, 239));
+        tblRecursos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrRecursos.setViewportView(tblRecursos);
 
         pnlListado.add(scrRecursos, java.awt.BorderLayout.CENTER);
 
-        lblAyudaTabla.setText("Revisa el catálogo y la disponibilidad de libros y equipos.");
         lblAyudaTabla.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblAyudaTabla.setForeground(new java.awt.Color(61, 79, 96));
+        lblAyudaTabla.setText("Revisa el catálogo y la disponibilidad de libros y equipos.");
         pnlListado.add(lblAyudaTabla, java.awt.BorderLayout.SOUTH);
 
         pnlContenido.add(pnlListado, java.awt.BorderLayout.CENTER);
