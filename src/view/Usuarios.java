@@ -121,9 +121,9 @@ public class Usuarios extends javax.swing.JFrame {
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 26, 22, 26));
         pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 8));
 
-        lblTitulo.setText("GESTIÓN DE USUARIOS");
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 25)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setForeground(new java.awt.Color(0, 255, 204));
+        lblTitulo.setText("GESTIÓN DE USUARIOS");
         pnlEncabezado.add(lblTitulo, java.awt.BorderLayout.NORTH);
 
         lblSubtitulo.setText("Estudiantes y docentes | Sistema de biblioteca");
@@ -142,9 +142,9 @@ public class Usuarios extends javax.swing.JFrame {
         pnlFormulario.setPreferredSize(new java.awt.Dimension(318, 420));
         pnlFormulario.setLayout(new java.awt.BorderLayout(0, 20));
 
-        lblDatos.setText("Datos del usuario");
         lblDatos.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDatos.setForeground(new java.awt.Color(0, 113, 121));
+        lblDatos.setText("Datos del usuario");
         pnlFormulario.add(lblDatos, java.awt.BorderLayout.NORTH);
 
         pnlCampos.setOpaque(false);
