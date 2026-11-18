@@ -54,18 +54,18 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlEncabezado.setBackground(new java.awt.Color(24, 43, 66));
+        pnlEncabezado.setBackground(new java.awt.Color(0, 0, 204));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 28, 22, 28));
         pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 8));
 
-        lblTitulo.setText("SISTEMA DE BIBLIOTECA");
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 25)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
+        lblTitulo.setText("SISTEMA DE BIBLIOTECA");
         pnlEncabezado.add(lblTitulo, java.awt.BorderLayout.NORTH);
 
-        lblSubtitulo.setText("Gestión de libros y equipos para estudiantes y docentes");
         lblSubtitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(202, 223, 231));
+        lblSubtitulo.setText("Gestión de libros y equipos para estudiantes y docentes");
         pnlEncabezado.add(lblSubtitulo, java.awt.BorderLayout.SOUTH);
 
         pnlContenido.setBackground(new java.awt.Color(243, 246, 249));
@@ -162,9 +162,9 @@ public class Principal extends javax.swing.JFrame {
         pnlDetalle.setPreferredSize(new java.awt.Dimension(800, 100));
         pnlDetalle.setLayout(new java.awt.BorderLayout(0, 8));
 
-        lblSeccion.setText("Menú principal");
         lblSeccion.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lblSeccion.setForeground(new java.awt.Color(0, 113, 121));
+        lblSeccion.setForeground(new java.awt.Color(102, 51, 255));
+        lblSeccion.setText("Menú principal");
         pnlDetalle.add(lblSeccion, java.awt.BorderLayout.NORTH);
 
         txtDescripcion.setEditable(false);
@@ -189,10 +189,10 @@ public class Principal extends javax.swing.JFrame {
         lblPie.setForeground(new java.awt.Color(61, 79, 96));
         pnlPie.add(lblPie, java.awt.BorderLayout.CENTER);
 
-        btnSalir.setText("Salir");
+        btnSalir.setBackground(new java.awt.Color(51, 102, 255));
         btnSalir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnSalir.setBackground(new java.awt.Color(0, 113, 121));
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
+        btnSalir.setText("Salir");
         btnSalir.setFocusPainted(false);
         btnSalir.setPreferredSize(new java.awt.Dimension(110, 36));
         btnSalir.addActionListener(this::btnSalirActionPerformed);
