@@ -107,9 +107,10 @@ public class Principal extends javax.swing.JFrame {
         btnPrestamos.addActionListener(this::btnPrestamosActionPerformed);
         pnlOpciones.add(btnPrestamos);
 
-        btnDevoluciones.setText("Devoluciones");
+        btnDevoluciones.setBackground(new java.awt.Color(22, 79, 91));
         btnDevoluciones.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        btnDevoluciones.setForeground(new java.awt.Color(24, 43, 66));
+        btnDevoluciones.setForeground(new java.awt.Color(255, 255, 255));
+        btnDevoluciones.setText("Devoluciones");
         btnDevoluciones.setFocusPainted(false);
         btnDevoluciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnDevoluciones.setMargin(new java.awt.Insets(12, 20, 12, 20));
@@ -117,9 +118,10 @@ public class Principal extends javax.swing.JFrame {
         btnDevoluciones.addActionListener(this::btnDevolucionesActionPerformed);
         pnlOpciones.add(btnDevoluciones);
 
-        btnRenovaciones.setText("Renovaciones");
+        btnRenovaciones.setBackground(new java.awt.Color(107, 63, 42));
         btnRenovaciones.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        btnRenovaciones.setForeground(new java.awt.Color(24, 43, 66));
+        btnRenovaciones.setForeground(new java.awt.Color(255, 255, 255));
+        btnRenovaciones.setText("Renovaciones");
         btnRenovaciones.setFocusPainted(false);
         btnRenovaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnRenovaciones.setMargin(new java.awt.Insets(12, 20, 12, 20));
