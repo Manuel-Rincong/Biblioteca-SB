@@ -28,6 +28,30 @@ public class ReglaPrestamoDAO {
         return regla;
     }
     
+    public ReglaPrestamo buscarPorTipoUsuarioYRecurso(long idTipoUsuario, long idTipoRecurso, Connection conexion){
+
+        String sql = "SELECT * FROM regla_prestamo WHERE id_tipo_usuario = ? AND id_tipo_recurso = ? AND activa = TRUE";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, idTipoUsuario);
+            sentencia.setLong(2, idTipoRecurso);
+
+            try(ResultSet resultado = sentencia.executeQuery()){
+
+                if(resultado.next()){
+                    return convertirReglaPrestamo(resultado);
+                }
+
+                return null;
+            }
+
+        }catch(SQLException e){
+            System.out.println("Error al buscar la regla de préstamo: " + e.getMessage());
+            return null;
+        }
+    }
+    
     public ReglaPrestamo buscarPorTipoUsuarioYRecurso(long idTipoUsuario, long idTipoRecurso){
         
         String sql = "SELECT * FROM regla_prestamo WHERE id_tipo_usuario = ? AND id_tipo_recurso = ? AND activa = TRUE";

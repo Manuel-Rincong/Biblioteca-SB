@@ -28,6 +28,47 @@ public class RecursoDAO {
         return recurso;
     }
     
+    public boolean actualizarDisponibilidad(long idRecurso, boolean disponible, Connection conexion){
+        
+        String sql = "UPDATE recurso SET disponible = ? WHERE id_recurso = ?";
+        
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setBoolean(1, disponible);
+            sentencia.setLong(2, idRecurso);
+
+            return sentencia.executeUpdate() > 0;
+
+        }catch(SQLException e){
+            System.out.println("Error al actualizar la disponibilidad del recurso: " + e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean actualizarDisponibilidad(long idRecurso, boolean disponible){
+
+        String sql = "UPDATE recurso SET disponible = ? WHERE id_recurso = ?";
+
+        Connection conexion = ConexionBD.obtenerConexion();
+
+        if(conexion == null){
+            return false;
+        }
+
+        try(conexion;
+            PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setBoolean(1, disponible);
+            sentencia.setLong(2, idRecurso);
+
+            return sentencia.executeUpdate() > 0;
+
+        }catch(SQLException e){
+            System.out.println("Error al actualizar la disponibilidad del recurso: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public boolean desactivar(long idRecurso){
         
         String sql = "UPDATE recurso SET activo = FALSE WHERE id_recurso = ?";
@@ -107,6 +148,28 @@ public class RecursoDAO {
             
         }catch(SQLException e){
             System.out.println("Error al listar todos los recursos: "+e.getMessage());
+            return null;
+        }
+    }
+    
+    public Recurso buscarPorIdConBloqueo(long idRecurso, Connection conexion){
+        
+        String sql = "SELECT * FROM recurso WHERE id_recurso = ? FOR UPDATE";
+        
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setLong(1, idRecurso);
+            
+            ResultSet resultado = sentencia.executeQuery();
+            
+            if(resultado.next()){
+               return convertirRecurso(resultado); 
+            }
+            
+            return null;
+            
+        }catch(SQLException e){
+            System.out.println("Error al buscar los recursos por el id: "+e.getMessage());
             return null;
         }
     }

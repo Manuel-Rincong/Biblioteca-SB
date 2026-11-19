@@ -108,6 +108,29 @@ public class UsuarioDAO {
         }
     }
     
+    public Usuario buscarPorIdConBloqueo(long idUsuario, Connection conexion){
+
+        String sql = "SELECT * FROM usuario WHERE id_usuario = ? FOR UPDATE";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, idUsuario);
+
+            try(ResultSet resultado = sentencia.executeQuery()){
+
+                if(resultado.next()){
+                    return convertirUsuario(resultado);
+                }
+
+                return null;
+            }
+
+        }catch(SQLException e){
+            System.out.println("Error al buscar por el id del usuario: " + e.getMessage());
+            return null;
+        }
+    }
+    
     public Usuario buscarPorId(long idUsuario){
         
         String sql = "SELECT * FROM usuario WHERE id_usuario = ?";

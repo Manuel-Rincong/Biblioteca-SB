@@ -118,6 +118,29 @@ public class PrestamoDAO {
         }
     }
     
+    public int contarActivosPorUsuario(long idUsuario, Connection conexion){
+
+        String sql = "SELECT COUNT(*) FROM prestamo WHERE id_usuario = ? AND estado = 'ACTIVO'";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, idUsuario);
+
+            try(ResultSet resultado = sentencia.executeQuery()){
+
+                if(resultado.next()){
+                    return resultado.getInt("count");
+                }
+
+                return 0;
+            }
+
+        }catch(SQLException e){
+            System.out.println("Error al contar activos por usuario: " + e.getMessage());
+            return -1;
+        }
+    }
+    
     public int contarActivosPorUsuario(long idUsuario){
         
         String sql = "SELECT COUNT(*) FROM prestamo WHERE id_usuario = ? AND estado = 'ACTIVO'";
@@ -297,6 +320,34 @@ public class PrestamoDAO {
         }catch(SQLException e){
             System.out.println("Error al buscar por el id de prestamo: "+e.getMessage());
             return null;
+        }
+    }
+    
+    public boolean registrar(Prestamo prestamo, Connection conexion){
+
+        String sql = "INSERT INTO prestamo (id_usuario, id_recurso, fecha_prestamo, fecha_limite, fecha_devolucion, renovaciones_realizadas, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, prestamo.getIdUsuario());
+            sentencia.setLong(2, prestamo.getIdRecurso());
+            sentencia.setDate(3, java.sql.Date.valueOf(prestamo.getFechaPrestamo()));
+            sentencia.setDate(4, java.sql.Date.valueOf(prestamo.getFechaLimite()));
+
+            if(prestamo.getFechaDevolucion() != null){
+                sentencia.setDate(5, java.sql.Date.valueOf(prestamo.getFechaDevolucion()));
+            }else{
+                sentencia.setNull(5, java.sql.Types.DATE);
+            }
+
+            sentencia.setInt(6, prestamo.getRenovacionesRealizadas());
+            sentencia.setString(7, prestamo.getEstado());
+
+            return sentencia.executeUpdate() > 0;
+
+        }catch(SQLException e){
+            System.out.println("Error al registrar el préstamo: " + e.getMessage());
+            return false;
         }
     }
     
