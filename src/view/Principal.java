@@ -54,7 +54,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlEncabezado.setBackground(new java.awt.Color(0, 0, 204));
+        pnlEncabezado.setBackground(new java.awt.Color(204, 0, 0));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 28, 22, 28));
         pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 8));
 
@@ -96,9 +96,10 @@ public class Principal extends javax.swing.JFrame {
         btnRecursos.addActionListener(this::btnRecursosActionPerformed);
         pnlOpciones.add(btnRecursos);
 
-        btnPrestamos.setText("Préstamos");
+        btnPrestamos.setBackground(new java.awt.Color(67, 45, 86));
         btnPrestamos.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        btnPrestamos.setForeground(new java.awt.Color(24, 43, 66));
+        btnPrestamos.setForeground(new java.awt.Color(255, 255, 255));
+        btnPrestamos.setText("Préstamos");
         btnPrestamos.setFocusPainted(false);
         btnPrestamos.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnPrestamos.setMargin(new java.awt.Insets(12, 20, 12, 20));
