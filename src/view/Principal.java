@@ -129,9 +129,10 @@ public class Principal extends javax.swing.JFrame {
         btnRenovaciones.addActionListener(this::btnRenovacionesActionPerformed);
         pnlOpciones.add(btnRenovaciones);
 
-        btnListaEspera.setText("Lista de espera");
+        btnListaEspera.setBackground(new java.awt.Color(45, 65, 88));
         btnListaEspera.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        btnListaEspera.setForeground(new java.awt.Color(24, 43, 66));
+        btnListaEspera.setForeground(new java.awt.Color(255, 255, 255));
+        btnListaEspera.setText("Lista de espera");
         btnListaEspera.setFocusPainted(false);
         btnListaEspera.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnListaEspera.setMargin(new java.awt.Insets(12, 20, 12, 20));
