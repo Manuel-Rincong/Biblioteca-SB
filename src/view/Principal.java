@@ -54,7 +54,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        pnlEncabezado.setBackground(new java.awt.Color(204, 0, 0));
+        pnlEncabezado.setBackground(new java.awt.Color(0, 0, 0));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 28, 22, 28));
         pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 8));
 
@@ -151,9 +151,10 @@ public class Principal extends javax.swing.JFrame {
         btnNotificaciones.addActionListener(this::btnNotificacionesActionPerformed);
         pnlOpciones.add(btnNotificaciones);
 
-        btnConsultas.setText("Consultas e historial");
+        btnConsultas.setBackground(new java.awt.Color(255, 255, 0));
         btnConsultas.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         btnConsultas.setForeground(new java.awt.Color(24, 43, 66));
+        btnConsultas.setText("Consultas e historial");
         btnConsultas.setFocusPainted(false);
         btnConsultas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnConsultas.setMargin(new java.awt.Insets(12, 20, 12, 20));
@@ -169,7 +170,6 @@ public class Principal extends javax.swing.JFrame {
         pnlDetalle.setLayout(new java.awt.BorderLayout(0, 8));
 
         lblSeccion.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        lblSeccion.setForeground(new java.awt.Color(102, 51, 255));
         lblSeccion.setText("Menú principal");
         pnlDetalle.add(lblSeccion, java.awt.BorderLayout.NORTH);
 
@@ -192,10 +192,9 @@ public class Principal extends javax.swing.JFrame {
 
         lblPie.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblPie.setForeground(new java.awt.Color(61, 79, 96));
-        lblPie.setText("Libros y equipos | Estudiantes y docentes");
         pnlPie.add(lblPie, java.awt.BorderLayout.CENTER);
 
-        btnSalir.setBackground(new java.awt.Color(51, 102, 255));
+        btnSalir.setBackground(new java.awt.Color(204, 0, 0));
         btnSalir.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("Salir");
