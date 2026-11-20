@@ -167,7 +167,6 @@ public class Notificaciones extends javax.swing.JFrame {
         pnlCabeceraTabla = new javax.swing.JPanel();
         lblListado = new javax.swing.JLabel();
         btnConsultar = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
         scrNotificaciones = new javax.swing.JScrollPane();
         tblNotificaciones = new javax.swing.JTable();
         lblAyudaTabla = new javax.swing.JLabel();
@@ -394,8 +393,6 @@ public class Notificaciones extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("jButton1");
-
         javax.swing.GroupLayout pnlCabeceraTablaLayout = new javax.swing.GroupLayout(pnlCabeceraTabla);
         pnlCabeceraTabla.setLayout(pnlCabeceraTablaLayout);
         pnlCabeceraTablaLayout.setHorizontalGroup(
@@ -404,7 +401,6 @@ public class Notificaciones extends javax.swing.JFrame {
                 .addComponent(lblListado, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12)
                 .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         pnlCabeceraTablaLayout.setVerticalGroup(
             pnlCabeceraTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -412,7 +408,7 @@ public class Notificaciones extends javax.swing.JFrame {
                 .addGroup(pnlCabeceraTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblListado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addComponent(jButton1))
+                .addGap(30, 30, 30))
         );
 
         scrNotificaciones.setPreferredSize(new java.awt.Dimension(600, 320));
@@ -560,7 +556,6 @@ public class Notificaciones extends javax.swing.JFrame {
     private javax.swing.JButton btnMarcarLeida;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbUsuarios;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblAyudaTabla;
     private javax.swing.JLabel lblDatos;

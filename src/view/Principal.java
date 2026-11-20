@@ -40,6 +40,9 @@ public class Principal extends javax.swing.JFrame {
     public void configurarAccionNotificaciones(java.awt.event.ActionListener accion) {
     btnNotificaciones.addActionListener(accion);
     }
+    public void configurarAccionConsultas(java.awt.event.ActionListener accion) {
+    btnConsultas.addActionListener(accion);
+    }
    
     private void mostrarSeccion(String nombre, String descripcion) {
         lblSeccion.setText(nombre);

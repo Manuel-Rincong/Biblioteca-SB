@@ -9,6 +9,7 @@ import view.Devoluciones;
 import view.Renovaciones;
 import view.ListaDeEspera;
 import view.Notificaciones;
+import view.Consultas;
 
 public class PrincipalControlador {
     private Usuarios usuarios;
@@ -18,6 +19,7 @@ public class PrincipalControlador {
     private Renovaciones renovaciones;
     private ListaDeEspera ListaDeEspera;
     private Notificaciones Notificaciones;
+    private Consultas Consultas;
     
     public PrincipalControlador(Principal principal) {
         principal.configurarAccionUsuarios(e -> abrirUsuarios());
@@ -27,6 +29,7 @@ public class PrincipalControlador {
         principal.configurarAccionRenovaciones(e -> abrirRenovaciones());
         principal.configurarAccionListaDeEspera(e -> abrirListaDeEspera());
         principal.configurarAccionNotificaciones(e -> abrirNotificaciones());
+        principal.configurarAccionConsultas(e -> abrirConsultas());
     }
 
     private void abrirUsuarios() {
@@ -89,6 +92,15 @@ public class PrincipalControlador {
 
     Notificaciones.setVisible(true);
     Notificaciones.toFront();
+    } 
+    
+    private void abrirConsultas () {
+    if (Consultas == null || !Consultas.isDisplayable()) {
+        Consultas = new Consultas();
+    }
+
+    Consultas.setVisible(true);
+    Consultas.toFront();
     } 
     
 }
