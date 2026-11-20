@@ -1,9 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package controlador;
 
+import modelo.Usuario;
+import servicio.UsuarioServicio;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import javax.swing.SwingWorker;
@@ -15,6 +13,7 @@ public class UsuariosControlador {
     
 private final Usuarios vista;
     private final TipoUsuarioServicio tipoUsuarioServicio;
+    private final UsuarioServicio usuarioServicio = new UsuarioServicio();
     private ArrayList<TipoUsuario> tiposUsuario;
 
     public UsuariosControlador(Usuarios vista) {
