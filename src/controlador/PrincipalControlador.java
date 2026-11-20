@@ -7,6 +7,7 @@ import view.Recursos;
 import view.Prestamos;
 import view.Devoluciones;
 import view.Renovaciones;
+import view.ListaDeEspera;
 
 public class PrincipalControlador {
     private Usuarios usuarios;
@@ -14,6 +15,7 @@ public class PrincipalControlador {
     private Prestamos prestamos;
     private Devoluciones devoluciones;
     private Renovaciones renovaciones;
+    private ListaDeEspera ListaDeEspera;
     
     public PrincipalControlador(Principal principal) {
         principal.configurarAccionUsuarios(e -> abrirUsuarios());
@@ -21,6 +23,7 @@ public class PrincipalControlador {
         principal.configurarAccionPrestamos(e -> abrirPrestamos());
         principal.configurarAccionDevoluciones(e -> abrirDevoluciones());
         principal.configurarAccionRenovaciones(e -> abrirRenovaciones());
+        principal.configurarAccionListaDeEspera(e -> abrirListaDeEspera());
     }
 
     private void abrirUsuarios() {
@@ -65,6 +68,15 @@ public class PrincipalControlador {
 
     renovaciones.setVisible(true);
     renovaciones.toFront();
+    } 
+    
+    private void abrirListaDeEspera() {
+    if (ListaDeEspera == null || !ListaDeEspera.isDisplayable()) {
+        ListaDeEspera = new ListaDeEspera();
+    }
+
+    ListaDeEspera.setVisible(true);
+    ListaDeEspera.toFront();
     } 
     
 }
