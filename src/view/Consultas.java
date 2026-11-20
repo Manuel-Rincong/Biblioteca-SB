@@ -295,7 +295,6 @@ public class Consultas extends javax.swing.JFrame {
 
         btnCerrar.setBackground(new java.awt.Color(233, 240, 220));
         btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        btnCerrar.setForeground(new java.awt.Color(255, 255, 0));
         btnCerrar.setText("Cerrar");
         btnCerrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(9, 16, 9, 16));
         btnCerrar.setContentAreaFilled(false);
