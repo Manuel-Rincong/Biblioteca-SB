@@ -268,15 +268,15 @@ public class Prestamos extends javax.swing.JFrame {
         pnlAcciones.setOpaque(false);
         pnlAcciones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
 
-        btnRegistrar.setText("Registrar");
-        btnRegistrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnRegistrar.setBackground(new java.awt.Color(238, 232, 244));
+        btnRegistrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnRegistrar.setForeground(new java.awt.Color(255, 255, 255));
+        btnRegistrar.setText("Registrar");
+        btnRegistrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(9, 16, 9, 16));
+        btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.setEnabled(false);
         btnRegistrar.setFocusPainted(false);
-        btnRegistrar.setContentAreaFilled(false);
         btnRegistrar.setOpaque(true);
-        btnRegistrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(9, 16, 9, 16));
         btnRegistrar.setPreferredSize(new java.awt.Dimension(112, 38));
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -363,12 +363,12 @@ public class Prestamos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblPrestamos.setRowHeight(28);
         tblPrestamos.setFillsViewportHeight(true);
-        tblPrestamos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblPrestamos.setGridColor(new java.awt.Color(231, 224, 236));
+        tblPrestamos.setRowHeight(28);
         tblPrestamos.setSelectionBackground(new java.awt.Color(231, 219, 240));
         tblPrestamos.setSelectionForeground(new java.awt.Color(67, 45, 86));
-        tblPrestamos.setGridColor(new java.awt.Color(231, 224, 236));
+        tblPrestamos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrPrestamos.setViewportView(tblPrestamos);
 
         pnlListado.add(scrPrestamos, java.awt.BorderLayout.CENTER);

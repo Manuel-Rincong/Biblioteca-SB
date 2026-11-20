@@ -325,7 +325,6 @@ public class Usuarios extends javax.swing.JFrame {
         pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 26, 18, 26));
         pnlPie.setLayout(new java.awt.BorderLayout(20, 0));
 
-        lblEstado.setText("Gestión de estudiantes y docentes");
         lblEstado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblEstado.setForeground(new java.awt.Color(61, 79, 96));
         pnlPie.add(lblEstado, java.awt.BorderLayout.CENTER);

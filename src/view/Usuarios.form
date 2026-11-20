@@ -579,7 +579,6 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lblEstado">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Gesti&#xf3;n de estudiantes y docentes"/>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="SansSerif" size="12" style="0"/>
             </Property>
