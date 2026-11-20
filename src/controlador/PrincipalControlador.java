@@ -6,18 +6,21 @@ import view.Usuarios;
 import view.Recursos;
 import view.Prestamos;
 import view.Devoluciones;
+import view.Renovaciones;
 
 public class PrincipalControlador {
     private Usuarios usuarios;
     private Recursos recursos;
     private Prestamos prestamos;
     private Devoluciones devoluciones;
+    private Renovaciones renovaciones;
     
     public PrincipalControlador(Principal principal) {
         principal.configurarAccionUsuarios(e -> abrirUsuarios());
         principal.configurarAccionRecursos(e -> abrirRecursos());
         principal.configurarAccionPrestamos(e -> abrirPrestamos());
         principal.configurarAccionDevoluciones(e -> abrirDevoluciones());
+        principal.configurarAccionRenovaciones(e -> abrirRenovaciones());
     }
 
     private void abrirUsuarios() {
@@ -53,6 +56,15 @@ public class PrincipalControlador {
 
     devoluciones.setVisible(true);
     devoluciones.toFront();
+    } 
+    
+    private void abrirRenovaciones() {
+    if (renovaciones == null || !renovaciones.isDisplayable()) {
+        renovaciones = new Renovaciones();
+    }
+
+    renovaciones.setVisible(true);
+    renovaciones.toFront();
     } 
     
 }
