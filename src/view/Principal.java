@@ -25,6 +25,10 @@ public class Principal extends javax.swing.JFrame {
     public void configurarAccionRecursos(java.awt.event.ActionListener accion) {
         btnRecursos.addActionListener(accion);
     }
+    public void configurarAccionPrestamos(java.awt.event.ActionListener accion) {
+    btnPrestamos.addActionListener(accion);
+    }
+    
     private void mostrarSeccion(String nombre, String descripcion) {
         lblSeccion.setText(nombre);
         txtDescripcion.setText(descripcion);
@@ -150,7 +154,7 @@ public class Principal extends javax.swing.JFrame {
         btnNotificaciones.setBackground(new java.awt.Color(65, 79, 46));
         btnNotificaciones.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         btnNotificaciones.setForeground(new java.awt.Color(255, 255, 255));
-        btnNotificaciones.setText("Avisos internos");
+        btnNotificaciones.setText("Notificaciones");
         btnNotificaciones.setFocusPainted(false);
         btnNotificaciones.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNotificaciones.setMargin(new java.awt.Insets(12, 20, 12, 20));
@@ -161,7 +165,7 @@ public class Principal extends javax.swing.JFrame {
         btnConsultas.setBackground(new java.awt.Color(255, 255, 0));
         btnConsultas.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
         btnConsultas.setForeground(new java.awt.Color(24, 43, 66));
-        btnConsultas.setText("Consultas e historial");
+        btnConsultas.setText("Consultas");
         btnConsultas.setFocusPainted(false);
         btnConsultas.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnConsultas.setMargin(new java.awt.Insets(12, 20, 12, 20));
