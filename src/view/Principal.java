@@ -18,6 +18,11 @@ public class Principal extends javax.swing.JFrame {
     public Principal() {
         initComponents();
     }
+    
+    public void configurarAccionUsuarios(java.awt.event.ActionListener accion) {
+    btnUsuarios.addActionListener(accion);
+    
+    }
     private void mostrarSeccion(String nombre, String descripcion) {
         lblSeccion.setText(nombre);
         txtDescripcion.setText(descripcion);
@@ -292,7 +297,11 @@ public class Principal extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Principal().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> {
+            Principal principal = new Principal();
+            new controlador.PrincipalControlador(principal);
+            principal.setVisible(true);
+        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
