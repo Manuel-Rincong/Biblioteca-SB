@@ -28,7 +28,10 @@ public class Principal extends javax.swing.JFrame {
     public void configurarAccionPrestamos(java.awt.event.ActionListener accion) {
     btnPrestamos.addActionListener(accion);
     }
-    
+    public void configurarAccionDevoluciones(java.awt.event.ActionListener accion) {
+    btnDevoluciones.addActionListener(accion);
+    }
+   
     private void mostrarSeccion(String nombre, String descripcion) {
         lblSeccion.setText(nombre);
         txtDescripcion.setText(descripcion);
