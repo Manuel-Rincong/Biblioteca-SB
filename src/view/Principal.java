@@ -37,6 +37,9 @@ public class Principal extends javax.swing.JFrame {
     public void configurarAccionListaDeEspera(java.awt.event.ActionListener accion) {
     btnListaEspera.addActionListener(accion);
     }
+    public void configurarAccionNotificaciones(java.awt.event.ActionListener accion) {
+    btnNotificaciones.addActionListener(accion);
+    }
    
     private void mostrarSeccion(String nombre, String descripcion) {
         lblSeccion.setText(nombre);

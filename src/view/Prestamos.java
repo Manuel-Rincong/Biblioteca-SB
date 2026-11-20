@@ -391,14 +391,14 @@ public class Prestamos extends javax.swing.JFrame {
         lblEstado.setForeground(new java.awt.Color(53, 47, 62));
         pnlPie.add(lblEstado, java.awt.BorderLayout.CENTER);
 
-        btnCerrar.setText("Cerrar");
-        btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnCerrar.setBackground(new java.awt.Color(238, 232, 244));
+        btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(67, 45, 86));
-        btnCerrar.setFocusPainted(false);
-        btnCerrar.setContentAreaFilled(false);
-        btnCerrar.setOpaque(true);
+        btnCerrar.setText("Cerrar");
         btnCerrar.setBorder(javax.swing.BorderFactory.createEmptyBorder(9, 16, 9, 16));
+        btnCerrar.setContentAreaFilled(false);
+        btnCerrar.setFocusPainted(false);
+        btnCerrar.setOpaque(true);
         btnCerrar.setPreferredSize(new java.awt.Dimension(112, 38));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

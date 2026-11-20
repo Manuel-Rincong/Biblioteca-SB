@@ -167,14 +167,15 @@ public class Notificaciones extends javax.swing.JFrame {
         pnlCabeceraTabla = new javax.swing.JPanel();
         lblListado = new javax.swing.JLabel();
         btnConsultar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         scrNotificaciones = new javax.swing.JScrollPane();
         tblNotificaciones = new javax.swing.JTable();
         lblAyudaTabla = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Biblioteca | Notificaciones");
         setMinimumSize(new java.awt.Dimension(1000, 680));
-        setPreferredSize(new java.awt.Dimension(1100, 700));
 
         pnlEncabezado.setBackground(new java.awt.Color(65, 79, 46));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 26, 18, 26));
@@ -194,20 +195,16 @@ public class Notificaciones extends javax.swing.JFrame {
 
         pnlContenido.setBackground(new java.awt.Color(247, 250, 242));
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(18, 26, 18, 26));
-        pnlContenido.setLayout(new java.awt.BorderLayout(20, 0));
 
         pnlFormulario.setBackground(new java.awt.Color(255, 255, 255));
         pnlFormulario.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 22, 22, 22));
         pnlFormulario.setPreferredSize(new java.awt.Dimension(360, 440));
-        pnlFormulario.setLayout(new java.awt.BorderLayout(0, 14));
 
-        lblDatos.setText("Consultar avisos");
         lblDatos.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDatos.setForeground(new java.awt.Color(83, 105, 52));
-        pnlFormulario.add(lblDatos, java.awt.BorderLayout.NORTH);
+        lblDatos.setText("Consultar avisos");
 
         pnlCampos.setOpaque(false);
-        pnlCampos.setLayout(new java.awt.BorderLayout(0, 12));
 
         pnlFiltros.setOpaque(false);
         pnlFiltros.setPreferredSize(new java.awt.Dimension(316, 190));
@@ -271,32 +268,52 @@ public class Notificaciones extends javax.swing.JFrame {
 
         pnlFiltros.add(pnlFechaCreacion);
 
-        pnlCampos.add(pnlFiltros, java.awt.BorderLayout.NORTH);
-
         pnlMensaje.setOpaque(false);
-        pnlMensaje.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblMensaje.setText("Mensaje completo");
         lblMensaje.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblMensaje.setForeground(new java.awt.Color(44, 56, 36));
-        pnlMensaje.add(lblMensaje, java.awt.BorderLayout.NORTH);
+        lblMensaje.setText("Mensaje completo");
 
         txtMensaje.setEditable(false);
+        txtMensaje.setBackground(new java.awt.Color(247, 250, 242));
+        txtMensaje.setColumns(20);
         txtMensaje.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtMensaje.setForeground(new java.awt.Color(44, 56, 36));
-        txtMensaje.setBackground(new java.awt.Color(247, 250, 242));
-        txtMensaje.setRows(4);
-        txtMensaje.setColumns(20);
         txtMensaje.setLineWrap(true);
+        txtMensaje.setRows(4);
         txtMensaje.setWrapStyleWord(true);
         txtMensaje.setMargin(new java.awt.Insets(6, 8, 6, 8));
         scrMensaje.setViewportView(txtMensaje);
 
-        pnlMensaje.add(scrMensaje, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlMensajeLayout = new javax.swing.GroupLayout(pnlMensaje);
+        pnlMensaje.setLayout(pnlMensajeLayout);
+        pnlMensajeLayout.setHorizontalGroup(
+            pnlMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(scrMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlMensajeLayout.setVerticalGroup(
+            pnlMensajeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlMensajeLayout.createSequentialGroup()
+                .addComponent(lblMensaje)
+                .addGap(6, 6, 6)
+                .addComponent(scrMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
-        pnlCampos.add(pnlMensaje, java.awt.BorderLayout.CENTER);
-
-        pnlFormulario.add(pnlCampos, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlCamposLayout = new javax.swing.GroupLayout(pnlCampos);
+        pnlCampos.setLayout(pnlCamposLayout);
+        pnlCamposLayout.setHorizontalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlCamposLayout.setVerticalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCamposLayout.createSequentialGroup()
+                .addComponent(pnlFiltros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(pnlMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlAcciones.setOpaque(false);
         pnlAcciones.setLayout(new java.awt.GridLayout(2, 1, 0, 8));
@@ -334,40 +351,69 @@ public class Notificaciones extends javax.swing.JFrame {
         });
         pnlAcciones.add(btnLimpiar);
 
-        pnlFormulario.add(pnlAcciones, java.awt.BorderLayout.SOUTH);
-
-        pnlContenido.add(pnlFormulario, java.awt.BorderLayout.WEST);
+        javax.swing.GroupLayout pnlFormularioLayout = new javax.swing.GroupLayout(pnlFormulario);
+        pnlFormulario.setLayout(pnlFormularioLayout);
+        pnlFormularioLayout.setHorizontalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlFormularioLayout.setVerticalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormularioLayout.createSequentialGroup()
+                .addComponent(lblDatos)
+                .addGap(14, 14, 14)
+                .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlListado.setBackground(new java.awt.Color(255, 255, 255));
         pnlListado.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        pnlListado.setLayout(new java.awt.BorderLayout(0, 16));
 
         pnlCabeceraTabla.setOpaque(false);
-        pnlCabeceraTabla.setLayout(new java.awt.BorderLayout(12, 0));
 
-        lblListado.setText("Avisos del usuario");
         lblListado.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblListado.setForeground(new java.awt.Color(83, 105, 52));
-        pnlCabeceraTabla.add(lblListado, java.awt.BorderLayout.CENTER);
+        lblListado.setText("Avisos del usuario");
 
-        btnConsultar.setText("Consultar");
-        btnConsultar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnConsultar.setBackground(new java.awt.Color(233, 240, 220));
+        btnConsultar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnConsultar.setForeground(new java.awt.Color(65, 79, 46));
+        btnConsultar.setText("Consultar");
+        btnConsultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(9, 16, 9, 16));
+        btnConsultar.setContentAreaFilled(false);
         btnConsultar.setEnabled(false);
         btnConsultar.setFocusPainted(false);
-        btnConsultar.setContentAreaFilled(false);
         btnConsultar.setOpaque(true);
-        btnConsultar.setBorder(javax.swing.BorderFactory.createEmptyBorder(9, 16, 9, 16));
         btnConsultar.setPreferredSize(new java.awt.Dimension(112, 38));
         btnConsultar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConsultarActionPerformed(evt);
             }
         });
-        pnlCabeceraTabla.add(btnConsultar, java.awt.BorderLayout.EAST);
 
-        pnlListado.add(pnlCabeceraTabla, java.awt.BorderLayout.NORTH);
+        jButton1.setText("jButton1");
+
+        javax.swing.GroupLayout pnlCabeceraTablaLayout = new javax.swing.GroupLayout(pnlCabeceraTabla);
+        pnlCabeceraTabla.setLayout(pnlCabeceraTablaLayout);
+        pnlCabeceraTablaLayout.setHorizontalGroup(
+            pnlCabeceraTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCabeceraTablaLayout.createSequentialGroup()
+                .addComponent(lblListado, javax.swing.GroupLayout.PREFERRED_SIZE, 469, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlCabeceraTablaLayout.setVerticalGroup(
+            pnlCabeceraTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCabeceraTablaLayout.createSequentialGroup()
+                .addGroup(pnlCabeceraTablaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblListado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnConsultar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jButton1))
+        );
 
         scrNotificaciones.setPreferredSize(new java.awt.Dimension(600, 320));
 
@@ -396,33 +442,80 @@ public class Notificaciones extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tblNotificaciones.setRowHeight(28);
         tblNotificaciones.setFillsViewportHeight(true);
-        tblNotificaciones.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblNotificaciones.setGridColor(new java.awt.Color(226, 234, 215));
+        tblNotificaciones.setRowHeight(28);
         tblNotificaciones.setSelectionBackground(new java.awt.Color(226, 236, 208));
         tblNotificaciones.setSelectionForeground(new java.awt.Color(65, 79, 46));
-        tblNotificaciones.setGridColor(new java.awt.Color(226, 234, 215));
+        tblNotificaciones.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrNotificaciones.setViewportView(tblNotificaciones);
 
-        pnlListado.add(scrNotificaciones, java.awt.BorderLayout.CENTER);
-
-        lblAyudaTabla.setText("Selecciona un aviso para leer el mensaje completo.");
         lblAyudaTabla.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblAyudaTabla.setForeground(new java.awt.Color(44, 56, 36));
-        pnlListado.add(lblAyudaTabla, java.awt.BorderLayout.SOUTH);
+        lblAyudaTabla.setText("Selecciona un aviso para leer el mensaje completo.");
 
-        pnlContenido.add(pnlListado, java.awt.BorderLayout.CENTER);
+        jButton2.setBackground(new java.awt.Color(0, 102, 51));
+        jButton2.setText("Cerrar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout pnlListadoLayout = new javax.swing.GroupLayout(pnlListado);
+        pnlListado.setLayout(pnlListadoLayout);
+        pnlListadoLayout.setHorizontalGroup(
+            pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoLayout.createSequentialGroup()
+                .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlListadoLayout.createSequentialGroup()
+                        .addComponent(lblAyudaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(218, 218, 218)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pnlCabeceraTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrNotificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 593, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 87, Short.MAX_VALUE))
+        );
+        pnlListadoLayout.setVerticalGroup(
+            pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoLayout.createSequentialGroup()
+                .addComponent(pnlCabeceraTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(scrNotificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 411, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlListadoLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addComponent(lblAyudaTabla)
+                        .addContainerGap(12, Short.MAX_VALUE))
+                    .addGroup(pnlListadoLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlContenidoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 560, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         getContentPane().add(pnlContenido, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
-        if (accionConsultar != null) {
-            accionConsultar.actionPerformed(evt);
-        }
-    }//GEN-LAST:event_btnConsultarActionPerformed
 
     private void btnMarcarLeidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMarcarLeidaActionPerformed
         if (accionMarcarLeida != null) {
@@ -442,6 +535,16 @@ public class Notificaciones extends javax.swing.JFrame {
         notificarCambioFiltro(evt);
     }//GEN-LAST:event_cmbEstadoActionPerformed
 
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        if (accionConsultar != null) {
+            accionConsultar.actionPerformed(evt);
+        }
+    }//GEN-LAST:event_btnConsultarActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     public static void main(String[] args) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
@@ -457,6 +560,8 @@ public class Notificaciones extends javax.swing.JFrame {
     private javax.swing.JButton btnMarcarLeida;
     private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbUsuarios;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel lblAyudaTabla;
     private javax.swing.JLabel lblDatos;
     private javax.swing.JLabel lblEstadoLectura;
