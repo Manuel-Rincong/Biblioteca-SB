@@ -35,6 +35,7 @@ public class PrincipalControlador {
     private void abrirUsuarios() {
         if (usuarios == null || !usuarios.isDisplayable()) {
             usuarios = new Usuarios();
+            new UsuariosControlador(usuarios);
         }
         usuarios.setVisible(true);
         usuarios.toFront();

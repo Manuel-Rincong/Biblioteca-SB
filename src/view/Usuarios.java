@@ -131,72 +131,99 @@ public class Usuarios extends javax.swing.JFrame {
         lblSubtitulo.setForeground(new java.awt.Color(202, 223, 231));
         pnlEncabezado.add(lblSubtitulo, java.awt.BorderLayout.SOUTH);
 
-        getContentPane().add(pnlEncabezado, java.awt.BorderLayout.NORTH);
-
         pnlContenido.setBackground(new java.awt.Color(243, 246, 249));
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 26, 20, 26));
-        pnlContenido.setLayout(new java.awt.BorderLayout(20, 0));
 
         pnlFormulario.setBackground(new java.awt.Color(255, 255, 255));
         pnlFormulario.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 22, 22, 22));
         pnlFormulario.setPreferredSize(new java.awt.Dimension(318, 420));
-        pnlFormulario.setLayout(new java.awt.BorderLayout(0, 20));
 
         lblDatos.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDatos.setForeground(new java.awt.Color(0, 113, 121));
         lblDatos.setText("Datos del usuario");
-        pnlFormulario.add(lblDatos, java.awt.BorderLayout.NORTH);
 
         pnlCampos.setOpaque(false);
-        pnlCampos.setLayout(new java.awt.GridLayout(4, 1, 0, 16));
 
         pnlIdentificacion.setOpaque(false);
-        pnlIdentificacion.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblIdentificacion.setText("Identificación");
         lblIdentificacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblIdentificacion.setForeground(new java.awt.Color(61, 79, 96));
-        pnlIdentificacion.add(lblIdentificacion, java.awt.BorderLayout.NORTH);
+        lblIdentificacion.setText("Identificación");
 
+        txtIdentificacion.setColumns(18);
         txtIdentificacion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtIdentificacion.setForeground(new java.awt.Color(24, 43, 66));
-        txtIdentificacion.setColumns(18);
         txtIdentificacion.setMargin(new java.awt.Insets(5, 8, 5, 8));
-        pnlIdentificacion.add(txtIdentificacion, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlIdentificacion);
+        javax.swing.GroupLayout pnlIdentificacionLayout = new javax.swing.GroupLayout(pnlIdentificacion);
+        pnlIdentificacion.setLayout(pnlIdentificacionLayout);
+        pnlIdentificacionLayout.setHorizontalGroup(
+            pnlIdentificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlIdentificacionLayout.setVerticalGroup(
+            pnlIdentificacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIdentificacionLayout.createSequentialGroup()
+                .addComponent(lblIdentificacion)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pnlNombre.setOpaque(false);
-        pnlNombre.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblNombre.setText("Nombre");
         lblNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(61, 79, 96));
-        pnlNombre.add(lblNombre, java.awt.BorderLayout.NORTH);
+        lblNombre.setText("Nombre");
 
+        txtNombre.setColumns(18);
         txtNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(24, 43, 66));
-        txtNombre.setColumns(18);
         txtNombre.setMargin(new java.awt.Insets(5, 8, 5, 8));
-        pnlNombre.add(txtNombre, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlNombre);
+        javax.swing.GroupLayout pnlNombreLayout = new javax.swing.GroupLayout(pnlNombre);
+        pnlNombre.setLayout(pnlNombreLayout);
+        pnlNombreLayout.setHorizontalGroup(
+            pnlNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlNombreLayout.setVerticalGroup(
+            pnlNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNombreLayout.createSequentialGroup()
+                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pnlCorreo.setOpaque(false);
-        pnlCorreo.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblCorreo.setText("Correo");
         lblCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblCorreo.setForeground(new java.awt.Color(61, 79, 96));
-        pnlCorreo.add(lblCorreo, java.awt.BorderLayout.NORTH);
+        lblCorreo.setText("Correo");
 
+        txtCorreo.setColumns(18);
         txtCorreo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtCorreo.setForeground(new java.awt.Color(24, 43, 66));
-        txtCorreo.setColumns(18);
         txtCorreo.setMargin(new java.awt.Insets(5, 8, 5, 8));
-        pnlCorreo.add(txtCorreo, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlCorreo);
+        javax.swing.GroupLayout pnlCorreoLayout = new javax.swing.GroupLayout(pnlCorreo);
+        pnlCorreo.setLayout(pnlCorreoLayout);
+        pnlCorreoLayout.setHorizontalGroup(
+            pnlCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlCorreoLayout.setVerticalGroup(
+            pnlCorreoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCorreoLayout.createSequentialGroup()
+                .addComponent(lblCorreo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
 
         pnlTipo.setOpaque(false);
         pnlTipo.setLayout(new java.awt.BorderLayout(0, 6));
@@ -211,9 +238,26 @@ public class Usuarios extends javax.swing.JFrame {
         cmbTipoUsuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo" }));
         pnlTipo.add(cmbTipoUsuario, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlTipo);
-
-        pnlFormulario.add(pnlCampos, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlCamposLayout = new javax.swing.GroupLayout(pnlCampos);
+        pnlCampos.setLayout(pnlCamposLayout);
+        pnlCamposLayout.setHorizontalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlCamposLayout.setVerticalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCamposLayout.createSequentialGroup()
+                .addComponent(pnlIdentificacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(pnlCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(pnlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlAcciones.setOpaque(false);
         pnlAcciones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
@@ -244,9 +288,23 @@ public class Usuarios extends javax.swing.JFrame {
         });
         pnlAcciones.add(btnLimpiar);
 
-        pnlFormulario.add(pnlAcciones, java.awt.BorderLayout.SOUTH);
-
-        pnlContenido.add(pnlFormulario, java.awt.BorderLayout.WEST);
+        javax.swing.GroupLayout pnlFormularioLayout = new javax.swing.GroupLayout(pnlFormulario);
+        pnlFormulario.setLayout(pnlFormularioLayout);
+        pnlFormularioLayout.setHorizontalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlFormularioLayout.setVerticalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormularioLayout.createSequentialGroup()
+                .addComponent(lblDatos)
+                .addGap(20, 20, 20)
+                .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlListado.setBackground(new java.awt.Color(255, 255, 255));
         pnlListado.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
@@ -317,21 +375,30 @@ public class Usuarios extends javax.swing.JFrame {
         lblAyudaTabla.setForeground(new java.awt.Color(61, 79, 96));
         pnlListado.add(lblAyudaTabla, java.awt.BorderLayout.SOUTH);
 
-        pnlContenido.add(pnlListado, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(pnlContenido, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
 
         pnlPie.setBackground(new java.awt.Color(243, 246, 249));
         pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 26, 18, 26));
-        pnlPie.setLayout(new java.awt.BorderLayout(20, 0));
 
         lblEstado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblEstado.setForeground(new java.awt.Color(61, 79, 96));
-        pnlPie.add(lblEstado, java.awt.BorderLayout.CENTER);
 
-        btnCerrar.setText("Cerrar");
         btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(24, 43, 66));
+        btnCerrar.setText("Cerrar");
         btnCerrar.setFocusPainted(false);
         btnCerrar.setPreferredSize(new java.awt.Dimension(112, 38));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -339,9 +406,39 @@ public class Usuarios extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        pnlPie.add(btnCerrar, java.awt.BorderLayout.EAST);
 
-        getContentPane().add(pnlPie, java.awt.BorderLayout.SOUTH);
+        javax.swing.GroupLayout pnlPieLayout = new javax.swing.GroupLayout(pnlPie);
+        pnlPie.setLayout(pnlPieLayout);
+        pnlPieLayout.setHorizontalGroup(
+            pnlPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlPieLayout.createSequentialGroup()
+                .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 756, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlPieLayout.setVerticalGroup(
+            pnlPieLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 940, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
