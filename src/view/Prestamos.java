@@ -93,7 +93,7 @@ public class Prestamos extends javax.swing.JFrame {
     }
 
     public void mostrarEstado(String mensaje) {
-        lblEstado.setText(mensaje);
+        javax.swing.JOptionPane.showMessageDialog(this, mensaje);
     }
 
     public void limpiarFormulario() {
@@ -101,7 +101,6 @@ public class Prestamos extends javax.swing.JFrame {
         cmbRecursos.setSelectedIndex(0);
         txtFechaPrestamo.setText(java.time.LocalDate.now().toString());
         txtFechaLimite.setText("");
-        lblEstado.setText("Formulario limpio.");
         cmbUsuarios.requestFocusInWindow();
     }
 
@@ -145,8 +144,6 @@ public class Prestamos extends javax.swing.JFrame {
         scrPrestamos = new javax.swing.JScrollPane();
         tblPrestamos = new javax.swing.JTable();
         lblAyudaTabla = new javax.swing.JLabel();
-        pnlPie = new javax.swing.JPanel();
-        lblEstado = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -168,32 +165,24 @@ public class Prestamos extends javax.swing.JFrame {
         lblSubtitulo.setForeground(new java.awt.Color(236, 224, 246));
         pnlEncabezado.add(lblSubtitulo, java.awt.BorderLayout.SOUTH);
 
-        getContentPane().add(pnlEncabezado, java.awt.BorderLayout.NORTH);
-
         pnlContenido.setBackground(new java.awt.Color(247, 245, 250));
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 26, 20, 26));
-        pnlContenido.setLayout(new java.awt.BorderLayout(20, 0));
 
         pnlFormulario.setBackground(new java.awt.Color(255, 255, 255));
         pnlFormulario.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 22, 22, 22));
         pnlFormulario.setPreferredSize(new java.awt.Dimension(340, 440));
-        pnlFormulario.setLayout(new java.awt.BorderLayout(0, 20));
 
-        lblDatos.setText("Datos del préstamo");
         lblDatos.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDatos.setForeground(new java.awt.Color(104, 62, 135));
-        pnlFormulario.add(lblDatos, java.awt.BorderLayout.NORTH);
+        lblDatos.setText("Datos del préstamo");
 
         pnlCampos.setOpaque(false);
-        pnlCampos.setLayout(new java.awt.GridLayout(4, 1, 0, 16));
 
         pnlUsuario.setOpaque(false);
-        pnlUsuario.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblUsuario.setText("Usuario");
         lblUsuario.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblUsuario.setForeground(new java.awt.Color(53, 47, 62));
-        pnlUsuario.add(lblUsuario, java.awt.BorderLayout.NORTH);
+        lblUsuario.setText("Usuario");
 
         cmbUsuarios.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         cmbUsuarios.setForeground(new java.awt.Color(67, 45, 86));
@@ -203,9 +192,21 @@ public class Prestamos extends javax.swing.JFrame {
                 cmbUsuariosActionPerformed(evt);
             }
         });
-        pnlUsuario.add(cmbUsuarios, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlUsuario);
+        javax.swing.GroupLayout pnlUsuarioLayout = new javax.swing.GroupLayout(pnlUsuario);
+        pnlUsuario.setLayout(pnlUsuarioLayout);
+        pnlUsuarioLayout.setHorizontalGroup(
+            pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(cmbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlUsuarioLayout.setVerticalGroup(
+            pnlUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlUsuarioLayout.createSequentialGroup()
+                .addComponent(lblUsuario)
+                .addGap(6, 6, 6)
+                .addComponent(cmbUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlRecurso.setOpaque(false);
         pnlRecurso.setLayout(new java.awt.BorderLayout(0, 6));
@@ -225,25 +226,33 @@ public class Prestamos extends javax.swing.JFrame {
         });
         pnlRecurso.add(cmbRecursos, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlRecurso);
-
         pnlFechaPrestamo.setOpaque(false);
-        pnlFechaPrestamo.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblFechaPrestamo.setText("Fecha de préstamo (AAAA-MM-DD)");
         lblFechaPrestamo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblFechaPrestamo.setForeground(new java.awt.Color(53, 47, 62));
-        pnlFechaPrestamo.add(lblFechaPrestamo, java.awt.BorderLayout.NORTH);
+        lblFechaPrestamo.setText("Fecha de préstamo (AAAA-MM-DD)");
 
-        txtFechaPrestamo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        txtFechaPrestamo.setForeground(new java.awt.Color(67, 45, 86));
+        txtFechaPrestamo.setEditable(false);
         txtFechaPrestamo.setBackground(new java.awt.Color(247, 245, 250));
         txtFechaPrestamo.setColumns(18);
+        txtFechaPrestamo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        txtFechaPrestamo.setForeground(new java.awt.Color(67, 45, 86));
         txtFechaPrestamo.setMargin(new java.awt.Insets(5, 8, 5, 8));
-        txtFechaPrestamo.setEditable(false);
-        pnlFechaPrestamo.add(txtFechaPrestamo, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlFechaPrestamo);
+        javax.swing.GroupLayout pnlFechaPrestamoLayout = new javax.swing.GroupLayout(pnlFechaPrestamo);
+        pnlFechaPrestamo.setLayout(pnlFechaPrestamoLayout);
+        pnlFechaPrestamoLayout.setHorizontalGroup(
+            pnlFechaPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlFechaPrestamoLayout.setVerticalGroup(
+            pnlFechaPrestamoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFechaPrestamoLayout.createSequentialGroup()
+                .addComponent(lblFechaPrestamo)
+                .addGap(6, 6, 6)
+                .addComponent(txtFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlFechaLimite.setOpaque(false);
         pnlFechaLimite.setLayout(new java.awt.BorderLayout(0, 6));
@@ -261,9 +270,27 @@ public class Prestamos extends javax.swing.JFrame {
         txtFechaLimite.setEditable(false);
         pnlFechaLimite.add(txtFechaLimite, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlFechaLimite);
-
-        pnlFormulario.add(pnlCampos, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlCamposLayout = new javax.swing.GroupLayout(pnlCampos);
+        pnlCampos.setLayout(pnlCamposLayout);
+        pnlCamposLayout.setHorizontalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlRecurso, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlFechaLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlCamposLayout.setVerticalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCamposLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addComponent(pnlUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(pnlRecurso, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(pnlFechaPrestamo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(pnlFechaLimite, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlAcciones.setOpaque(false);
         pnlAcciones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
@@ -301,13 +328,26 @@ public class Prestamos extends javax.swing.JFrame {
         });
         pnlAcciones.add(btnLimpiar);
 
-        pnlFormulario.add(pnlAcciones, java.awt.BorderLayout.SOUTH);
-
-        pnlContenido.add(pnlFormulario, java.awt.BorderLayout.WEST);
+        javax.swing.GroupLayout pnlFormularioLayout = new javax.swing.GroupLayout(pnlFormulario);
+        pnlFormulario.setLayout(pnlFormularioLayout);
+        pnlFormularioLayout.setHorizontalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlFormularioLayout.setVerticalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormularioLayout.createSequentialGroup()
+                .addComponent(lblDatos)
+                .addGap(20, 20, 20)
+                .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlListado.setBackground(new java.awt.Color(255, 255, 255));
         pnlListado.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        pnlListado.setLayout(new java.awt.BorderLayout(0, 16));
 
         pnlCabeceraTabla.setOpaque(false);
         pnlCabeceraTabla.setLayout(new java.awt.BorderLayout(12, 0));
@@ -333,8 +373,6 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         pnlCabeceraTabla.add(btnConsultar, java.awt.BorderLayout.EAST);
-
-        pnlListado.add(pnlCabeceraTabla, java.awt.BorderLayout.NORTH);
 
         scrPrestamos.setPreferredSize(new java.awt.Dimension(620, 320));
 
@@ -371,25 +409,9 @@ public class Prestamos extends javax.swing.JFrame {
         tblPrestamos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrPrestamos.setViewportView(tblPrestamos);
 
-        pnlListado.add(scrPrestamos, java.awt.BorderLayout.CENTER);
-
-        lblAyudaTabla.setText("Consulta el usuario, el recurso, las fechas y el estado de cada préstamo.");
         lblAyudaTabla.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         lblAyudaTabla.setForeground(new java.awt.Color(53, 47, 62));
-        pnlListado.add(lblAyudaTabla, java.awt.BorderLayout.SOUTH);
-
-        pnlContenido.add(pnlListado, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(pnlContenido, java.awt.BorderLayout.CENTER);
-
-        pnlPie.setBackground(new java.awt.Color(247, 245, 250));
-        pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 26, 18, 26));
-        pnlPie.setLayout(new java.awt.BorderLayout(20, 0));
-
-        lblEstado.setText("El plazo depende del tipo de usuario y de recurso.");
-        lblEstado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblEstado.setForeground(new java.awt.Color(53, 47, 62));
-        pnlPie.add(lblEstado, java.awt.BorderLayout.CENTER);
+        lblAyudaTabla.setText("Consulta el usuario, el recurso, las fechas y el estado de cada préstamo.");
 
         btnCerrar.setBackground(new java.awt.Color(238, 232, 244));
         btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
@@ -405,9 +427,64 @@ public class Prestamos extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        pnlPie.add(btnCerrar, java.awt.BorderLayout.EAST);
 
-        getContentPane().add(pnlPie, java.awt.BorderLayout.SOUTH);
+        javax.swing.GroupLayout pnlListadoLayout = new javax.swing.GroupLayout(pnlListado);
+        pnlListado.setLayout(pnlListadoLayout);
+        pnlListadoLayout.setHorizontalGroup(
+            pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoLayout.createSequentialGroup()
+                .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(pnlListadoLayout.createSequentialGroup()
+                        .addComponent(lblAyudaTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 388, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(148, 148, 148)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(pnlCabeceraTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(scrPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        pnlListadoLayout.setVerticalGroup(
+            pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoLayout.createSequentialGroup()
+                .addComponent(pnlCabeceraTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(scrPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(4, 4, 4)
+                .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAyudaTabla)
+                    .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -458,7 +535,6 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbUsuarios;
     private javax.swing.JLabel lblAyudaTabla;
     private javax.swing.JLabel lblDatos;
-    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblFechaLimite;
     private javax.swing.JLabel lblFechaPrestamo;
     private javax.swing.JLabel lblListado;
@@ -475,7 +551,6 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JPanel pnlFechaPrestamo;
     private javax.swing.JPanel pnlFormulario;
     private javax.swing.JPanel pnlListado;
-    private javax.swing.JPanel pnlPie;
     private javax.swing.JPanel pnlRecurso;
     private javax.swing.JPanel pnlUsuario;
     private javax.swing.JScrollPane scrPrestamos;

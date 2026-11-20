@@ -61,7 +61,7 @@ public class Recursos extends javax.swing.JFrame {
     }
 
     public void mostrarEstado(String mensaje) {
-        lblEstado.setText(mensaje);
+        javax.swing.JOptionPane.showMessageDialog(this, mensaje);
     }
 
     public void limpiarFormulario() {
@@ -69,7 +69,6 @@ public class Recursos extends javax.swing.JFrame {
         txtNombre.setText("");
         txtDescripcion.setText("");
         cmbTipoRecurso.setSelectedIndex(0);
-        lblEstado.setText("Formulario limpio.");
         txtIdentificador.requestFocusInWindow();
     }
 
@@ -107,9 +106,6 @@ public class Recursos extends javax.swing.JFrame {
         btnConsultar = new javax.swing.JButton();
         scrRecursos = new javax.swing.JScrollPane();
         tblRecursos = new javax.swing.JTable();
-        lblAyudaTabla = new javax.swing.JLabel();
-        pnlPie = new javax.swing.JPanel();
-        lblEstado = new javax.swing.JLabel();
         btnCerrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -129,60 +125,73 @@ public class Recursos extends javax.swing.JFrame {
         lblSubtitulo.setText("Registro y consulta de recursos | Sistema de biblioteca");
         pnlEncabezado.add(lblSubtitulo, java.awt.BorderLayout.SOUTH);
 
-        getContentPane().add(pnlEncabezado, java.awt.BorderLayout.NORTH);
-
         pnlContenido.setBackground(new java.awt.Color(243, 246, 249));
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 26, 20, 26));
-        pnlContenido.setLayout(new java.awt.BorderLayout(20, 0));
 
         pnlFormulario.setBackground(new java.awt.Color(255, 255, 255));
         pnlFormulario.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 22, 22, 22));
         pnlFormulario.setPreferredSize(new java.awt.Dimension(340, 440));
-        pnlFormulario.setLayout(new java.awt.BorderLayout(0, 18));
 
         lblDatos.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
         lblDatos.setForeground(new java.awt.Color(0, 113, 121));
         lblDatos.setText("Datos del recurso");
-        pnlFormulario.add(lblDatos, java.awt.BorderLayout.NORTH);
 
         pnlCampos.setOpaque(false);
-        pnlCampos.setLayout(new java.awt.BorderLayout(0, 16));
 
         pnlDatosBasicos.setOpaque(false);
         pnlDatosBasicos.setPreferredSize(new java.awt.Dimension(296, 192));
-        pnlDatosBasicos.setLayout(new java.awt.GridLayout(3, 1, 0, 12));
 
         pnlIdentificador.setOpaque(false);
-        pnlIdentificador.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblIdentificador.setText("Identificador");
         lblIdentificador.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblIdentificador.setForeground(new java.awt.Color(61, 79, 96));
-        pnlIdentificador.add(lblIdentificador, java.awt.BorderLayout.NORTH);
+        lblIdentificador.setText("Identificador");
 
+        txtIdentificador.setColumns(18);
         txtIdentificador.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtIdentificador.setForeground(new java.awt.Color(24, 43, 66));
-        txtIdentificador.setColumns(18);
         txtIdentificador.setMargin(new java.awt.Insets(5, 8, 5, 8));
-        pnlIdentificador.add(txtIdentificador, java.awt.BorderLayout.CENTER);
 
-        pnlDatosBasicos.add(pnlIdentificador);
+        javax.swing.GroupLayout pnlIdentificadorLayout = new javax.swing.GroupLayout(pnlIdentificador);
+        pnlIdentificador.setLayout(pnlIdentificadorLayout);
+        pnlIdentificadorLayout.setHorizontalGroup(
+            pnlIdentificadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlIdentificadorLayout.setVerticalGroup(
+            pnlIdentificadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlIdentificadorLayout.createSequentialGroup()
+                .addComponent(lblIdentificador)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIdentificador, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+        );
 
         pnlNombre.setOpaque(false);
-        pnlNombre.setLayout(new java.awt.BorderLayout(0, 6));
 
-        lblNombre.setText("Nombre");
         lblNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblNombre.setForeground(new java.awt.Color(61, 79, 96));
-        pnlNombre.add(lblNombre, java.awt.BorderLayout.NORTH);
+        lblNombre.setText("Nombre");
 
+        txtNombre.setColumns(18);
         txtNombre.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtNombre.setForeground(new java.awt.Color(24, 43, 66));
-        txtNombre.setColumns(18);
         txtNombre.setMargin(new java.awt.Insets(5, 8, 5, 8));
-        pnlNombre.add(txtNombre, java.awt.BorderLayout.CENTER);
 
-        pnlDatosBasicos.add(pnlNombre);
+        javax.swing.GroupLayout pnlNombreLayout = new javax.swing.GroupLayout(pnlNombre);
+        pnlNombre.setLayout(pnlNombreLayout);
+        pnlNombreLayout.setHorizontalGroup(
+            pnlNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlNombreLayout.setVerticalGroup(
+            pnlNombreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlNombreLayout.createSequentialGroup()
+                .addComponent(lblNombre)
+                .addGap(6, 6, 6)
+                .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlTipo.setOpaque(false);
         pnlTipo.setLayout(new java.awt.BorderLayout(0, 6));
@@ -197,9 +206,24 @@ public class Recursos extends javax.swing.JFrame {
         cmbTipoRecurso.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un tipo", "Libro", "Equipo" }));
         pnlTipo.add(cmbTipoRecurso, java.awt.BorderLayout.CENTER);
 
-        pnlDatosBasicos.add(pnlTipo);
-
-        pnlCampos.add(pnlDatosBasicos, java.awt.BorderLayout.NORTH);
+        javax.swing.GroupLayout pnlDatosBasicosLayout = new javax.swing.GroupLayout(pnlDatosBasicos);
+        pnlDatosBasicos.setLayout(pnlDatosBasicosLayout);
+        pnlDatosBasicosLayout.setHorizontalGroup(
+            pnlDatosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlDatosBasicosLayout.setVerticalGroup(
+            pnlDatosBasicosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDatosBasicosLayout.createSequentialGroup()
+                .addComponent(pnlIdentificador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(12, 12, 12)
+                .addComponent(pnlTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(10, Short.MAX_VALUE))
+        );
 
         pnlDescripcion.setOpaque(false);
         pnlDescripcion.setLayout(new java.awt.BorderLayout(0, 6));
@@ -220,9 +244,20 @@ public class Recursos extends javax.swing.JFrame {
 
         pnlDescripcion.add(scrDescripcion, java.awt.BorderLayout.CENTER);
 
-        pnlCampos.add(pnlDescripcion, java.awt.BorderLayout.CENTER);
-
-        pnlFormulario.add(pnlCampos, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlCamposLayout = new javax.swing.GroupLayout(pnlCampos);
+        pnlCampos.setLayout(pnlCamposLayout);
+        pnlCamposLayout.setHorizontalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlDatosBasicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlCamposLayout.setVerticalGroup(
+            pnlCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlCamposLayout.createSequentialGroup()
+                .addComponent(pnlDatosBasicos, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDescripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlAcciones.setOpaque(false);
         pnlAcciones.setLayout(new java.awt.GridLayout(1, 2, 10, 0));
@@ -254,13 +289,26 @@ public class Recursos extends javax.swing.JFrame {
         });
         pnlAcciones.add(btnLimpiar);
 
-        pnlFormulario.add(pnlAcciones, java.awt.BorderLayout.SOUTH);
-
-        pnlContenido.add(pnlFormulario, java.awt.BorderLayout.WEST);
+        javax.swing.GroupLayout pnlFormularioLayout = new javax.swing.GroupLayout(pnlFormulario);
+        pnlFormulario.setLayout(pnlFormularioLayout);
+        pnlFormularioLayout.setHorizontalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(lblDatos, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        pnlFormularioLayout.setVerticalGroup(
+            pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlFormularioLayout.createSequentialGroup()
+                .addComponent(lblDatos)
+                .addGap(18, 18, 18)
+                .addComponent(pnlCampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(pnlAcciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlListado.setBackground(new java.awt.Color(255, 255, 255));
         pnlListado.setBorder(javax.swing.BorderFactory.createEmptyBorder(20, 20, 20, 20));
-        pnlListado.setLayout(new java.awt.BorderLayout(0, 16));
 
         pnlCabeceraTabla.setOpaque(false);
         pnlCabeceraTabla.setLayout(new java.awt.BorderLayout(12, 0));
@@ -282,8 +330,6 @@ public class Recursos extends javax.swing.JFrame {
             }
         });
         pnlCabeceraTabla.add(btnConsultar, java.awt.BorderLayout.EAST);
-
-        pnlListado.add(pnlCabeceraTabla, java.awt.BorderLayout.NORTH);
 
         scrRecursos.setPreferredSize(new java.awt.Dimension(620, 320));
 
@@ -320,29 +366,9 @@ public class Recursos extends javax.swing.JFrame {
         tblRecursos.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         scrRecursos.setViewportView(tblRecursos);
 
-        pnlListado.add(scrRecursos, java.awt.BorderLayout.CENTER);
-
-        lblAyudaTabla.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblAyudaTabla.setForeground(new java.awt.Color(61, 79, 96));
-        lblAyudaTabla.setText("Revisa el catálogo y la disponibilidad de libros y equipos.");
-        pnlListado.add(lblAyudaTabla, java.awt.BorderLayout.SOUTH);
-
-        pnlContenido.add(pnlListado, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(pnlContenido, java.awt.BorderLayout.CENTER);
-
-        pnlPie.setBackground(new java.awt.Color(243, 246, 249));
-        pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 26, 18, 26));
-        pnlPie.setLayout(new java.awt.BorderLayout(20, 0));
-
-        lblEstado.setText("Gestión de libros y equipos");
-        lblEstado.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        lblEstado.setForeground(new java.awt.Color(61, 79, 96));
-        pnlPie.add(lblEstado, java.awt.BorderLayout.CENTER);
-
-        btnCerrar.setText("Cerrar");
         btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         btnCerrar.setForeground(new java.awt.Color(24, 43, 66));
+        btnCerrar.setText("Cerrar");
         btnCerrar.setFocusPainted(false);
         btnCerrar.setPreferredSize(new java.awt.Dimension(112, 38));
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -350,9 +376,63 @@ public class Recursos extends javax.swing.JFrame {
                 btnCerrarActionPerformed(evt);
             }
         });
-        pnlPie.add(btnCerrar, java.awt.BorderLayout.EAST);
 
-        getContentPane().add(pnlPie, java.awt.BorderLayout.SOUTH);
+        javax.swing.GroupLayout pnlListadoLayout = new javax.swing.GroupLayout(pnlListado);
+        pnlListado.setLayout(pnlListadoLayout);
+        pnlListadoLayout.setHorizontalGroup(
+            pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoLayout.createSequentialGroup()
+                .addGroup(pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlCabeceraTabla, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(scrRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlListadoLayout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, 0))
+        );
+        pnlListadoLayout.setVerticalGroup(
+            pnlListadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlListadoLayout.createSequentialGroup()
+                .addComponent(pnlCabeceraTabla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(16, 16, 16)
+                .addComponent(scrRecursos, javax.swing.GroupLayout.PREFERRED_SIZE, 344, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(5, 5, 5)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addComponent(pnlListado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addGroup(pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlListado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pnlFormulario, javax.swing.GroupLayout.DEFAULT_SIZE, 481, Short.MAX_VALUE))
+                .addGap(56, 56, 56))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(56, 56, 56))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -392,10 +472,8 @@ public class Recursos extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnLimpiar;
     private javax.swing.JComboBox<String> cmbTipoRecurso;
-    private javax.swing.JLabel lblAyudaTabla;
     private javax.swing.JLabel lblDatos;
     private javax.swing.JLabel lblDescripcion;
-    private javax.swing.JLabel lblEstado;
     private javax.swing.JLabel lblIdentificador;
     private javax.swing.JLabel lblListado;
     private javax.swing.JLabel lblNombre;
@@ -413,7 +491,6 @@ public class Recursos extends javax.swing.JFrame {
     private javax.swing.JPanel pnlIdentificador;
     private javax.swing.JPanel pnlListado;
     private javax.swing.JPanel pnlNombre;
-    private javax.swing.JPanel pnlPie;
     private javax.swing.JPanel pnlTipo;
     private javax.swing.JScrollPane scrDescripcion;
     private javax.swing.JScrollPane scrRecursos;

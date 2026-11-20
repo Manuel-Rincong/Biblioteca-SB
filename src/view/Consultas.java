@@ -132,7 +132,7 @@ public class Consultas extends javax.swing.JFrame {
 
         pnlEncabezado.setBackground(new java.awt.Color(255, 255, 0));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 26, 22, 26));
-        pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 0));
+        pnlEncabezado.setLayout(new java.awt.BorderLayout());
 
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 25)); // NOI18N
         lblTitulo.setText("CONSULTAS E HISTORIAL");
@@ -291,7 +291,7 @@ public class Consultas extends javax.swing.JFrame {
 
         pnlPie.setBackground(new java.awt.Color(247, 250, 242));
         pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 26, 18, 26));
-        pnlPie.setLayout(new java.awt.BorderLayout(0, 0));
+        pnlPie.setLayout(new java.awt.BorderLayout());
 
         btnCerrar.setBackground(new java.awt.Color(233, 240, 220));
         btnCerrar.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
