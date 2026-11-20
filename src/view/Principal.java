@@ -96,10 +96,8 @@ public class Principal extends javax.swing.JFrame {
 
         pnlContenido.setBackground(new java.awt.Color(243, 246, 249));
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 28, 18, 28));
-        pnlContenido.setLayout(new java.awt.BorderLayout(0, 18));
 
         pnlOpciones.setOpaque(false);
-        pnlOpciones.setLayout(new java.awt.GridLayout(4, 2, 14, 12));
 
         btnUsuarios.setBackground(new java.awt.Color(24, 43, 66));
         btnUsuarios.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -110,7 +108,6 @@ public class Principal extends javax.swing.JFrame {
         btnUsuarios.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnUsuarios.setPreferredSize(new java.awt.Dimension(350, 60));
         btnUsuarios.addActionListener(this::btnUsuariosActionPerformed);
-        pnlOpciones.add(btnUsuarios);
 
         btnRecursos.setBackground(new java.awt.Color(0, 153, 0));
         btnRecursos.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -120,7 +117,6 @@ public class Principal extends javax.swing.JFrame {
         btnRecursos.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnRecursos.setPreferredSize(new java.awt.Dimension(350, 60));
         btnRecursos.addActionListener(this::btnRecursosActionPerformed);
-        pnlOpciones.add(btnRecursos);
 
         btnPrestamos.setBackground(new java.awt.Color(67, 45, 86));
         btnPrestamos.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -131,7 +127,6 @@ public class Principal extends javax.swing.JFrame {
         btnPrestamos.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnPrestamos.setPreferredSize(new java.awt.Dimension(350, 60));
         btnPrestamos.addActionListener(this::btnPrestamosActionPerformed);
-        pnlOpciones.add(btnPrestamos);
 
         btnDevoluciones.setBackground(new java.awt.Color(22, 79, 91));
         btnDevoluciones.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -142,7 +137,6 @@ public class Principal extends javax.swing.JFrame {
         btnDevoluciones.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnDevoluciones.setPreferredSize(new java.awt.Dimension(350, 60));
         btnDevoluciones.addActionListener(this::btnDevolucionesActionPerformed);
-        pnlOpciones.add(btnDevoluciones);
 
         btnRenovaciones.setBackground(new java.awt.Color(107, 63, 42));
         btnRenovaciones.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -153,7 +147,6 @@ public class Principal extends javax.swing.JFrame {
         btnRenovaciones.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnRenovaciones.setPreferredSize(new java.awt.Dimension(350, 60));
         btnRenovaciones.addActionListener(this::btnRenovacionesActionPerformed);
-        pnlOpciones.add(btnRenovaciones);
 
         btnListaEspera.setBackground(new java.awt.Color(45, 65, 88));
         btnListaEspera.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -164,7 +157,6 @@ public class Principal extends javax.swing.JFrame {
         btnListaEspera.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnListaEspera.setPreferredSize(new java.awt.Dimension(350, 60));
         btnListaEspera.addActionListener(this::btnListaEsperaActionPerformed);
-        pnlOpciones.add(btnListaEspera);
 
         btnNotificaciones.setBackground(new java.awt.Color(65, 79, 46));
         btnNotificaciones.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -175,7 +167,6 @@ public class Principal extends javax.swing.JFrame {
         btnNotificaciones.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnNotificaciones.setPreferredSize(new java.awt.Dimension(350, 60));
         btnNotificaciones.addActionListener(this::btnNotificacionesActionPerformed);
-        pnlOpciones.add(btnNotificaciones);
 
         btnConsultas.setBackground(new java.awt.Color(255, 255, 0));
         btnConsultas.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
@@ -186,9 +177,49 @@ public class Principal extends javax.swing.JFrame {
         btnConsultas.setMargin(new java.awt.Insets(12, 20, 12, 20));
         btnConsultas.setPreferredSize(new java.awt.Dimension(350, 60));
         btnConsultas.addActionListener(this::btnConsultasActionPerformed);
-        pnlOpciones.add(btnConsultas);
 
-        pnlContenido.add(pnlOpciones, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout pnlOpcionesLayout = new javax.swing.GroupLayout(pnlOpciones);
+        pnlOpciones.setLayout(pnlOpcionesLayout);
+        pnlOpcionesLayout.setHorizontalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addComponent(btnRenovaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(btnListaEspera, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addComponent(btnNotificaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14)
+                .addComponent(btnConsultas, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
+                    .addComponent(btnPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(14, 14, 14)
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDevoluciones, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnRecursos, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)))
+        );
+        pnlOpcionesLayout.setVerticalGroup(
+            pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlOpcionesLayout.createSequentialGroup()
+                .addGap(1, 1, 1)
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnRecursos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPrestamos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnDevoluciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnRenovaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnListaEspera, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlOpcionesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnNotificaciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnConsultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         pnlDetalle.setBackground(new java.awt.Color(255, 255, 255));
         pnlDetalle.setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 18, 14, 18));
@@ -202,15 +233,28 @@ public class Principal extends javax.swing.JFrame {
         txtDescripcion.setEditable(false);
         txtDescripcion.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         txtDescripcion.setForeground(new java.awt.Color(61, 79, 96));
-        txtDescripcion.setText("Selecciona una opción para ver su función dentro de la biblioteca.");
         txtDescripcion.setLineWrap(true);
-        txtDescripcion.setWrapStyleWord(true);
         txtDescripcion.setRows(2);
-        txtDescripcion.setOpaque(false);
+        txtDescripcion.setText("Selecciona una opción para ver su función dentro de la biblioteca.");
+        txtDescripcion.setWrapStyleWord(true);
         txtDescripcion.setFocusable(false);
+        txtDescripcion.setOpaque(false);
         pnlDetalle.add(txtDescripcion, java.awt.BorderLayout.CENTER);
 
-        pnlContenido.add(pnlDetalle, java.awt.BorderLayout.SOUTH);
+        javax.swing.GroupLayout pnlContenidoLayout = new javax.swing.GroupLayout(pnlContenido);
+        pnlContenido.setLayout(pnlContenidoLayout);
+        pnlContenidoLayout.setHorizontalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(pnlOpciones, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(pnlDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+        );
+        pnlContenidoLayout.setVerticalGroup(
+            pnlContenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlContenidoLayout.createSequentialGroup()
+                .addComponent(pnlOpciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlDetalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         pnlPie.setBackground(new java.awt.Color(243, 246, 249));
         pnlPie.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 28, 18, 28));
@@ -233,25 +277,29 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 650, Short.MAX_VALUE)
+            .addGap(0, 656, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(pnlEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addContainerGap()))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 471, Short.MAX_VALUE)
+            .addGap(0, 577, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
                     .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
-                    .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, 0)
                     .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
