@@ -464,6 +464,38 @@ public class PrestamoServicio {
         }
     }
     
+    public boolean estaDisponibleParaUsuario(long idUsuario, long idRecurso) {
+        if (idUsuario <= 0 || idRecurso <= 0) {
+            return false;
+        }
+
+        Connection conexion = ConexionBD.obtenerConexion();
+
+        if (conexion == null) {
+            return false;
+        }
+
+        try (conexion) {
+            Recurso recurso = recursoDAO.buscarPorIdConBloqueo(idRecurso, conexion);
+
+            if (recurso == null || !recurso.isActivo()) {
+                return false;
+            }
+
+            ListaEspera notificado
+                    = listaEsperaDAO.buscarNotificadoPorRecurso(idRecurso, conexion);
+
+            if (notificado != null) {
+                return notificado.getIdUsuario() == idUsuario;
+            }
+
+            return recurso.isDisponible();
+        } catch (SQLException e) {
+            System.out.println("Error al consultar la disponibilidad: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public boolean registrar(Prestamo prestamo){
 
         if(prestamo == null){
@@ -502,17 +534,35 @@ public class PrestamoServicio {
                 }
 
                 // 1. Bloquear y consultar el recurso
-                Recurso recurso = recursoDAO.buscarPorIdConBloqueo(prestamo.getIdRecurso(), conexion);
+                Recurso recurso = recursoDAO.buscarPorIdConBloqueo(
+                        prestamo.getIdRecurso(), conexion);
 
-                if(recurso == null || !recurso.isActivo() || !recurso.isDisponible()){
+                if (recurso == null || !recurso.isActivo()) {
                     conexion.rollback();
                     return false;
                 }
 
-                // 2. Buscar la regla de préstamo
-                ReglaPrestamo regla = reglaPrestamoDAO.buscarPorTipoUsuarioYRecurso(usuarioBloqueado.getIdTipoUsuario(), recurso.getIdTipoRecurso(), conexion);
+                ListaEspera notificado = listaEsperaDAO.buscarNotificadoPorRecurso(
+                        recurso.getIdRecurso(), conexion);
 
-                if(regla == null || !regla.isActiva()){
+                if (notificado != null) {
+                    if (notificado.getIdUsuario() != usuarioBloqueado.getIdUsuario()) {
+                        conexion.rollback();
+                        return false;
+                    }
+                } else if (!recurso.isDisponible()) {
+                    conexion.rollback();
+                    return false;
+                }
+
+// 2. Buscar la regla de préstamo
+                ReglaPrestamo regla = reglaPrestamoDAO.buscarPorTipoUsuarioYRecurso(
+                        usuarioBloqueado.getIdTipoUsuario(),
+                        recurso.getIdTipoRecurso(),
+                        conexion
+                );
+
+                if (regla == null || !regla.isActiva()) {
                     conexion.rollback();
                     return false;
                 }
@@ -545,7 +595,17 @@ public class PrestamoServicio {
                     conexion.rollback();
                     return false;
                 }
+                
+                if (notificado != null) {
+                    boolean atendido = listaEsperaDAO.marcarComoAtendido(
+                            notificado.getIdListaEspera(), conexion);
 
+                    if (!atendido) {
+                        conexion.rollback();
+                        return false;
+                    }
+                }
+                
                 // 6. Actualizar disponibilidad
                 boolean recursoActualizado = recursoDAO.actualizarDisponibilidad(prestamo.getIdRecurso(), false, conexion);
 
