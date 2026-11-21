@@ -9,7 +9,6 @@ import acceso_datos.UsuarioDAO;
 import acceso_datos.ReglaPrestamoDAO;
 import acceso_datos.ListaEsperaDAO;
 import acceso_datos.RenovacionDAO;
-import acceso_datos.NotificacionDAO;
 
 import modelo.Prestamo;
 import modelo.Recurso;
@@ -17,7 +16,6 @@ import modelo.Usuario;
 import modelo.ReglaPrestamo;
 import modelo.ListaEspera;
 import modelo.Renovacion;
-import modelo.Notificacion;
 
 import java.sql.Connection;
 import conexion.ConexionBD;
@@ -36,7 +34,8 @@ public class PrestamoServicio {
     private ReglaPrestamoDAO reglaPrestamoDAO;
     private ListaEsperaDAO listaEsperaDAO;
     private RenovacionDAO renovacionDAO;
-    private NotificacionDAO notificacionDAO;
+    private DisponibilidadSubject disponibilidadSubject;
+    
     private final MultaDAO multaDAO = new MultaDAO();
     private final PoliticaMultaDAO politicaMultaDAO = new PoliticaMultaDAO();
     private final MultaServicio multaServicio = new MultaServicio();
@@ -48,7 +47,9 @@ public class PrestamoServicio {
         this.reglaPrestamoDAO = new ReglaPrestamoDAO();
         this.listaEsperaDAO = new ListaEsperaDAO();
         this.renovacionDAO = new RenovacionDAO();
-        this.notificacionDAO = new NotificacionDAO();
+        
+        this.disponibilidadSubject = new DisponibilidadSubject();
+        this.disponibilidadSubject.agregarObservador(new NotificacionListaEspera());
     }
     
     public int contarActivosPorUsuario(long idUsuario){
@@ -58,17 +59,19 @@ public class PrestamoServicio {
         
         return prestamoDAO.contarActivosPorUsuario(idUsuario);
     } 
+    
     public ArrayList<Renovacion> listarRenovaciones(long idPrestamo) {
         if (idPrestamo <= 0) {
             return null;
         }
 
-    return renovacionDAO.listarPorPrestamo(idPrestamo);
-}
+        return renovacionDAO.listarPorPrestamo(idPrestamo);
+    }
     
     public ArrayList<Prestamo> listarVencidos() {
-    return prestamoDAO.listarVencidos();
-}
+        return prestamoDAO.listarVencidos();
+    }
+    
     public ArrayList<Prestamo> listarActivosPorUsuario(long idUsuario){
         if(idUsuario <= 0){
             return null;
@@ -166,16 +169,14 @@ public class PrestamoServicio {
                         return false;
                     }
 
-                    Notificacion notificacion = new Notificacion(
+                    boolean notificacionEnviada = disponibilidadSubject.notificarObservadores(
+                        recurso.getIdRecurso(),
                         siguienteEnEspera.getIdUsuario(),
-                        "El recurso que solicitaste está disponible. Tienes 2 días para solicitarlo.",
-                        siguienteEnEspera.getIdListaEspera()
+                        siguienteEnEspera.getIdListaEspera(),
+                        conexion
                     );
 
-                    boolean notificacionRegistrada = notificacionDAO.registrar(
-                        notificacion, conexion);
-
-                    if(!notificacionRegistrada){
+                    if(!notificacionEnviada){
                         conexion.rollback();
                         return false;
                     }
@@ -315,15 +316,14 @@ public class PrestamoServicio {
                         return false;
                     }
 
-                    Notificacion notificacion = new Notificacion(siguienteEnEspera.getIdUsuario(),
-                        "El recurso que solicitaste está disponible. Tienes 2 días para solicitarlo.",
-                        siguienteEnEspera.getIdListaEspera()
+                    boolean notificacionEnviada = disponibilidadSubject.notificarObservadores(
+                        recurso.getIdRecurso(),
+                        siguienteEnEspera.getIdUsuario(),
+                        siguienteEnEspera.getIdListaEspera(),
+                        conexion
                     );
 
-                    boolean notificacionRegistrada = notificacionDAO.registrar(
-                        notificacion, conexion);
-
-                    if(!notificacionRegistrada){
+                    if(!notificacionEnviada){
                         conexion.rollback();
                         return false;
                     }
@@ -482,8 +482,7 @@ public class PrestamoServicio {
                 return false;
             }
 
-            ListaEspera notificado
-                    = listaEsperaDAO.buscarNotificadoPorRecurso(idRecurso, conexion);
+            ListaEspera notificado = listaEsperaDAO.buscarNotificadoPorRecurso(idRecurso, conexion);
 
             if (notificado != null) {
                 return notificado.getIdUsuario() == idUsuario;
@@ -555,7 +554,7 @@ public class PrestamoServicio {
                     return false;
                 }
 
-// 2. Buscar la regla de préstamo
+                // 2. Buscar la regla de préstamo
                 ReglaPrestamo regla = reglaPrestamoDAO.buscarPorTipoUsuarioYRecurso(
                         usuarioBloqueado.getIdTipoUsuario(),
                         recurso.getIdTipoRecurso(),
