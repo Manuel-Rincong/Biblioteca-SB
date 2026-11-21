@@ -40,6 +40,41 @@ public class PrestamoDAO {
         return consulta;
     }
     
+    public boolean actualizarRenovacion(long idPrestamo, LocalDate nuevaFechaLimite, int renovacionesRealizadas, Connection conexion){
+        
+        String sql = "UPDATE prestamo SET fecha_limite = ?, renovaciones_realizadas = ? WHERE id_prestamo = ? AND estado = 'ACTIVO'";
+        
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setDate(1, java.sql.Date.valueOf(nuevaFechaLimite));
+            sentencia.setInt(2, renovacionesRealizadas);
+            sentencia.setLong(3, idPrestamo);
+            
+            return sentencia.executeUpdate() > 0;
+            
+        }catch(SQLException e){
+            System.out.println("Error al actualizar la renovacion del prestamo: "+e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean actualizarDevolucion(long idPrestamo, LocalDate fechaDevolucion, Connection conexion){
+        
+        String sql = "UPDATE prestamo SET fecha_devolucion = ?, estado = 'DEVUELTO' WHERE id_prestamo = ?";
+        
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setDate(1, java.sql.Date.valueOf(fechaDevolucion));
+            sentencia.setLong(2, idPrestamo);
+            
+            return sentencia.executeUpdate() > 0;
+            
+        }catch(SQLException e){
+            System.out.println("Error al actualizar la devolucion del prestamo: "+e.getMessage());
+            return false;
+        }
+    }
+    
     public boolean actualizarDevolucion(long idPrestamo, LocalDate fechaDevolucion){
         
         String sql = "UPDATE prestamo SET fecha_devolucion = ?, estado = 'DEVUELTO' WHERE id_prestamo = ?";
@@ -60,6 +95,23 @@ public class PrestamoDAO {
             
         }catch(SQLException e){
             System.out.println("Error al actualizar la devolucion del prestamo: "+e.getMessage());
+            return false;
+        }
+    }
+    
+    public boolean actualizarEstado(long idPrestamo, String estado, Connection conexion){
+        
+        String sql = "UPDATE prestamo SET estado = ? WHERE id_prestamo = ?";
+         
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setString(1, estado);
+            sentencia.setLong(2, idPrestamo);
+            
+            return sentencia.executeUpdate() > 0;
+            
+        }catch(SQLException e){
+            System.out.println("Error al actualizar el estado de prestamo: "+e.getMessage());
             return false;
         }
     }
@@ -290,6 +342,51 @@ public class PrestamoDAO {
             
         }catch(SQLException e){
             System.out.println("Error al intentar listar todos los prestamos: "+ e.getMessage());
+            return null;
+        }
+    }
+    
+    public Prestamo buscarPorIdConBloqueo(long idPrestamo, Connection conexion){
+        
+        String sql = "SELECT * FROM prestamo WHERE id_prestamo = ? FOR UPDATE";
+        
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+            
+            sentencia.setLong(1, idPrestamo);
+            
+            ResultSet resultado = sentencia.executeQuery();
+            
+            if(resultado.next()){
+                return convertirPrestamo(resultado);
+            }
+            
+            return null;
+            
+        }catch(SQLException e){
+            System.out.println("Error al buscar por el id de prestamo: "+e.getMessage());
+            return null;
+        }
+    }
+    
+    public Prestamo buscarPorId(long idPrestamo, Connection conexion){
+
+        String sql = "SELECT * FROM prestamo WHERE id_prestamo = ?";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, idPrestamo);
+
+            try(ResultSet resultado = sentencia.executeQuery()){
+
+                if(resultado.next()){
+                    return convertirPrestamo(resultado);
+                }
+
+                return null;
+            }
+
+        }catch(SQLException e){
+            System.out.println("Error al buscar por el id de prestamo: " + e.getMessage());
             return null;
         }
     }
