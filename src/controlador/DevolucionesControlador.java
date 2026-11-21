@@ -9,6 +9,10 @@ import servicio.PrestamoServicio;
 import servicio.RecursoServicio;
 import servicio.UsuarioServicio;
 import view.Devoluciones;
+import java.math.BigDecimal;
+import modelo.PoliticaMulta;
+import servicio.MultaServicio;
+import servicio.PoliticaMultaServicio;
 
 public class DevolucionesControlador {
 
@@ -16,6 +20,8 @@ public class DevolucionesControlador {
     private final PrestamoServicio prestamoServicio = new PrestamoServicio();
     private final UsuarioServicio usuarioServicio = new UsuarioServicio();
     private final RecursoServicio recursoServicio = new RecursoServicio();
+    private final MultaServicio multaServicio = new MultaServicio();
+    private final PoliticaMultaServicio politicaServicio = new PoliticaMultaServicio();
 
     private final ArrayList<Prestamo> prestamosPendientes = new ArrayList<>();
     private ArrayList<Usuario> usuarios = new ArrayList<>();
@@ -79,22 +85,45 @@ public class DevolucionesControlador {
     }
 
     private void mostrarDetalle() {
-        int indice = vista.getIndicePrestamo();
+    int indice = vista.getIndicePrestamo();
 
-        if (indice < 0 || indice >= prestamosPendientes.size()) {
-            return;
-        }
-
-        Prestamo prestamo = prestamosPendientes.get(indice);
-
-        vista.mostrarDatosPrestamo(
-                buscarNombreUsuario(prestamo.getIdUsuario()),
-                buscarNombreRecurso(prestamo.getIdRecurso()),
-                prestamo.getFechaLimite()
-        );
-
-        vista.mostrarFechaDevolucion(LocalDate.now());
+    if (indice < 0 || indice >= prestamosPendientes.size()) {
+        return;
     }
+
+    Prestamo prestamo = prestamosPendientes.get(indice);
+    LocalDate fechaDevolucion = LocalDate.now();
+
+    vista.mostrarDatosPrestamo(
+            buscarNombreUsuario(prestamo.getIdUsuario()),
+            buscarNombreRecurso(prestamo.getIdRecurso()),
+            prestamo.getFechaLimite()
+    );
+
+    vista.mostrarFechaDevolucion(fechaDevolucion);
+
+    int diasRetraso = multaServicio.calcularDiasRetraso(
+            prestamo.getFechaLimite(), fechaDevolucion);
+
+    if (diasRetraso < 0) {
+        vista.mostrarEstado("No se pudieron calcular los días de retraso.");
+        return;
+    }
+
+    PoliticaMulta politica = null;
+
+    if (diasRetraso > 0) {
+        politica = politicaServicio.buscarActiva();
+    }
+
+    BigDecimal monto = multaServicio.calcularMonto(diasRetraso, politica);
+
+    vista.mostrarResultado(diasRetraso, monto);
+
+    if (monto == null) {
+        vista.mostrarEstado("No se pudo obtener una política de multa válida.");
+        }
+    }   
 
     private String buscarNombreUsuario(long idUsuario) {
         for (Usuario usuario : usuarios) {
