@@ -91,6 +91,24 @@ public class RenovacionDAO {
         }
     }
     
+    public boolean registrar(Renovacion renovacion, Connection conexion){
+
+        String sql = "INSERT INTO renovacion (id_prestamo, fecha_limite_anterior, nueva_fecha_limite) VALUES (?, ?, ?)";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, renovacion.getIdPrestamo());
+            sentencia.setDate(2, java.sql.Date.valueOf(renovacion.getFechaLimiteAnterior()));
+            sentencia.setDate(3, java.sql.Date.valueOf(renovacion.getNuevaFechaLimite()));
+
+            return sentencia.executeUpdate() > 0;
+
+        }catch(SQLException e){
+            System.out.println("Error al registrar los datos en renovacion: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public boolean registrar(Renovacion renovacion){
         
         String sql = "INSERT INTO renovacion (id_prestamo, fecha_limite_anterior, nueva_fecha_limite) VALUES (?, ?, ?)";

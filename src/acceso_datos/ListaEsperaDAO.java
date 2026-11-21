@@ -45,6 +45,21 @@ public class ListaEsperaDAO {
     public boolean cancelar(long idListaEspera){
         return actualizarEstado(idListaEspera, "CANCELADO");
     }
+    public boolean notificarSiguiente(long idListaEspera, Connection conexion){
+
+        String sql = "UPDATE lista_espera SET estado = 'NOTIFICADO', fecha_aviso = CURRENT_TIMESTAMP, fecha_vencimiento_aviso = CURRENT_TIMESTAMP + INTERVAL '2 days' WHERE id_lista_espera = ? AND estado = 'ESPERA'";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, idListaEspera);
+
+            return sentencia.executeUpdate() > 0;
+
+        }catch(SQLException e){
+            System.out.println("Error al notificar al siguiente usuario de la lista de espera: " + e.getMessage());
+            return false;
+        }
+    }
     
     public boolean actualizarEstado(long idListaEspera, String estado){
         
@@ -69,6 +84,29 @@ public class ListaEsperaDAO {
             return false;
         }
     } 
+    
+    public ListaEspera buscarSiguienteEnEspera(long idRecurso, Connection conexion){
+
+        String sql = "SELECT * FROM lista_espera WHERE id_recurso = ? AND estado = 'ESPERA' ORDER BY fecha_inscripcion ASC LIMIT 1";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, idRecurso);
+
+            try(ResultSet resultado = sentencia.executeQuery()){
+
+                if(resultado.next()){
+                    return convertirListaEspera(resultado);
+                }
+
+                return null;
+            }
+
+        }catch(SQLException e){
+            System.out.println("Error al buscar el siguiente en lista de espera: " + e.getMessage());
+            return null;
+        }
+    }
     
     public ListaEspera buscarSiguienteEnEspera(long idRecurso){
         

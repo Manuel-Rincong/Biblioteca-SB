@@ -142,6 +142,34 @@ public class NotificacionDAO {
         }
     }
     
+    public boolean registrar(Notificacion notificacion, Connection conexion){
+
+        if(notificacion == null){
+            return false;
+        }
+
+        String sql = "INSERT INTO notificacion (id_usuario, id_lista_espera, mensaje) VALUES (?, ?, ?)";
+
+        try(PreparedStatement sentencia = conexion.prepareStatement(sql)){
+
+            sentencia.setLong(1, notificacion.getIdUsuario());
+
+            if(notificacion.getIdListaEspera() == null){
+                sentencia.setNull(2, java.sql.Types.BIGINT);
+            }else{
+                sentencia.setLong(2, notificacion.getIdListaEspera());
+            }
+
+            sentencia.setString(3, notificacion.getMensaje());
+
+            return sentencia.executeUpdate() > 0;
+
+        }catch(SQLException e){
+            System.out.println("Error al registrar la notificacion: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public boolean registrar(Notificacion notificacion){
         
         String sql = "INSERT INTO notificacion (id_usuario, mensaje, id_lista_espera) VALUES(?, ?, ?)";
