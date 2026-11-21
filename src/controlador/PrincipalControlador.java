@@ -54,6 +54,7 @@ public class PrincipalControlador {
     private void abrirPrestamos() {
     if (prestamos == null || !prestamos.isDisplayable()) {
         prestamos = new Prestamos();
+        new PrestamosControlador(prestamos);
     }
 
     prestamos.setVisible(true);
