@@ -49,10 +49,13 @@ public class PrestamoServicio {
         
         return prestamoDAO.contarActivosPorUsuario(idUsuario);
     } 
-    
-    public ArrayList<Prestamo> listarVencidos(){
-        return prestamoDAO.listarVencidos();
-    }
+    public ArrayList<Renovacion> listarRenovaciones(long idPrestamo) {
+        if (idPrestamo <= 0) {
+            return null;
+        }
+
+    return renovacionDAO.listarPorPrestamo(idPrestamo);
+}
     
     public ArrayList<Prestamo> listarActivosPorUsuario(long idUsuario){
         if(idUsuario <= 0){
