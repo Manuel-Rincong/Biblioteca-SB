@@ -84,6 +84,7 @@ public class PrincipalControlador {
     private void abrirListaDeEspera() {
     if (ListaDeEspera == null || !ListaDeEspera.isDisplayable()) {
         ListaDeEspera = new ListaDeEspera();
+        new ListaDeEsperaControlador(ListaDeEspera);
     }
 
     ListaDeEspera.setVisible(true);
