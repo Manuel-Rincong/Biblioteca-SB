@@ -10,58 +10,53 @@ import modelo.PoliticaMulta;
 
 public class MultaServicio {
     private MultaDAO multaDAO;
+    private CalculadoraMulta calculadoraMulta;
     
     
     public MultaServicio(){
         this.multaDAO = new MultaDAO();
+        this.calculadoraMulta = new CalculadoraMulta(new MultaPorDia());
     }
     
     public int calcularDiasRetraso(LocalDate fechaLimite, LocalDate fechaDevolucion) {
-    if (fechaLimite == null || fechaDevolucion == null) {
-        return -1;
+        if (fechaLimite == null || fechaDevolucion == null) {
+            return -1;
+        }
+
+        long dias = ChronoUnit.DAYS.between(fechaLimite, fechaDevolucion);
+
+        if (dias > Integer.MAX_VALUE) {
+            return -1;
+        }
+
+        return (int) Math.max(0, dias);
     }
 
-    long dias = ChronoUnit.DAYS.between(fechaLimite, fechaDevolucion);
+    public BigDecimal calcularMonto(int diasRetraso, PoliticaMulta politica){
 
-    if (dias > Integer.MAX_VALUE) {
-        return -1;
+        if(diasRetraso < 0){
+            return null;
+        }
+
+        if(diasRetraso == 0){
+            return BigDecimal.ZERO;
+        }
+
+        if(politica == null || !politica.isActiva()){
+            return null;
+        }
+
+        if(politica.getDiasGracia() < 0
+                || politica.getValorPorDia() == null
+                || politica.getValorPorDia().compareTo(BigDecimal.ZERO) < 0
+                || (politica.getMultaMaxima() != null
+                && politica.getMultaMaxima().compareTo(BigDecimal.ZERO) < 0)){
+            return null;
+        }
+
+        return calculadoraMulta.calcular(politica, diasRetraso);
     }
-
-    return (int) Math.max(0, dias);
-}
-
-public BigDecimal calcularMonto(int diasRetraso, PoliticaMulta politica) {
-    if (diasRetraso < 0) {
-        return null;
-    }
-
-    if (diasRetraso == 0) {
-        return BigDecimal.ZERO;
-    }
-
-    if (politica == null || !politica.isActiva()) {
-        return null;
-    }
-
-    if (politica.getDiasGracia() < 0 || politica.getValorPorDia() == null
-            || politica.getValorPorDia().compareTo(BigDecimal.ZERO) < 0
-            || (politica.getMultaMaxima() != null
-            && politica.getMultaMaxima().compareTo(BigDecimal.ZERO) < 0)) {
-        return null;
-    }
-
-    int diasCobrables = Math.max(0, diasRetraso - politica.getDiasGracia());
-
-    BigDecimal monto = politica.getValorPorDia().multiply(
-            BigDecimal.valueOf(diasCobrables));
-
-    if (politica.getMultaMaxima() != null
-            && monto.compareTo(politica.getMultaMaxima()) > 0) {
-        monto = politica.getMultaMaxima();
-    }
-
-    return monto;
-}
+    
     public boolean registrar(Multa multa){
         if(multa == null){
             return false;
