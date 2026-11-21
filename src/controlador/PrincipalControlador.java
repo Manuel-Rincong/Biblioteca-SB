@@ -64,6 +64,7 @@ public class PrincipalControlador {
     private void abrirDevoluciones() {
     if (devoluciones == null || !devoluciones.isDisplayable()) {
         devoluciones = new Devoluciones();
+        new DevolucionesControlador(devoluciones);
     }
 
     devoluciones.setVisible(true);
