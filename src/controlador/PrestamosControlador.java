@@ -92,7 +92,8 @@ public class PrestamosControlador {
             return null;
         }
 
-        if (!recurso.isActivo() || !recurso.isDisponible()) {
+        if (!prestamoServicio.estaDisponibleParaUsuario(
+                usuario.getIdUsuario(), recurso.getIdRecurso())) {
             vista.mostrarEstado("El recurso seleccionado no está disponible para préstamo.");
             return null;
         }

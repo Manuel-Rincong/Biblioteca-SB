@@ -568,8 +568,7 @@ public class PrestamoServicio {
                 }
 
                 // 3. Comprobar el límite de préstamos
-                int prestamosActivos = prestamoDAO.contarActivosPorUsuario(usuarioBloqueado.getIdUsuario(), conexion);
-
+                int prestamosActivos = prestamoDAO.contarActivosPorUsuario(usuarioBloqueado.getIdUsuario(), conexion); 
                 if(prestamosActivos < 0 || prestamosActivos >= regla.getLimitePrestamos()){
                     conexion.rollback();
                     return false;
