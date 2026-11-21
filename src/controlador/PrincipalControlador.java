@@ -74,6 +74,7 @@ public class PrincipalControlador {
     private void abrirRenovaciones() {
     if (renovaciones == null || !renovaciones.isDisplayable()) {
         renovaciones = new Renovaciones();
+        new RenovacionesControlador(renovaciones);
     }
 
     renovaciones.setVisible(true);
