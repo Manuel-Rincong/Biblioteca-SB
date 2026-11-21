@@ -67,6 +67,10 @@ public class Consultas extends javax.swing.JFrame {
         tblPrestamos.clearSelection();
     }
 
+    public void mostrarEstado(String mensaje) {
+    javax.swing.JOptionPane.showMessageDialog(this, mensaje);
+    }
+    
     public void limpiarFormulario() {
         cargandoFiltros = true;
         try {

@@ -104,6 +104,7 @@ public class PrincipalControlador {
     private void abrirConsultas () {
     if (Consultas == null || !Consultas.isDisplayable()) {
         Consultas = new Consultas();
+        new ConsultasControlador(Consultas);
     }
 
     Consultas.setVisible(true);
