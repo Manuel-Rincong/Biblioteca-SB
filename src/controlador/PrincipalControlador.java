@@ -94,6 +94,7 @@ public class PrincipalControlador {
     private void abrirNotificaciones() {
     if (Notificaciones == null || !Notificaciones.isDisplayable()) {
         Notificaciones = new Notificaciones();
+        new NotificacionesControlador(Notificaciones);
     }
 
     Notificaciones.setVisible(true);
