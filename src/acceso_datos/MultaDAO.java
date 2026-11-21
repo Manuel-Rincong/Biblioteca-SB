@@ -179,6 +179,23 @@ public class MultaDAO {
         }
     }
     
+    public boolean registrar(Multa multa, Connection conexion) {
+        String sql = "INSERT INTO multa (id_prestamo, id_politica, dias_retraso, monto_total, estado) VALUES (?, ?, ?, ?, ?)";
+
+        try (PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+            sentencia.setLong(1, multa.getIdPrestamo());
+            sentencia.setLong(2, multa.getIdPolitica());
+            sentencia.setInt(3, multa.getDiasRetraso());
+            sentencia.setBigDecimal(4, multa.getMontoTotal());
+            sentencia.setString(5, multa.getEstado());
+
+            return sentencia.executeUpdate() > 0;
+        } catch (SQLException e) {
+            System.out.println("Error al registrar la multa: " + e.getMessage());
+            return false;
+        }
+    }
+    
     public boolean registrar(Multa multa){
         
         String sql = "INSERT INTO multa (id_prestamo, id_politica, dias_retraso, monto_total, estado) VALUES (?, ?, ?, ?, ?)";

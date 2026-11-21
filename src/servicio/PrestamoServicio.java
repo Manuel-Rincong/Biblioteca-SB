@@ -23,6 +23,12 @@ import java.sql.Connection;
 import conexion.ConexionBD;
 import java.sql.SQLException;
 
+import java.math.BigDecimal;
+import acceso_datos.MultaDAO;
+import acceso_datos.PoliticaMultaDAO;
+import modelo.Multa;
+import modelo.PoliticaMulta;
+
 public class PrestamoServicio {
     private PrestamoDAO prestamoDAO;
     private RecursoDAO recursoDAO;
@@ -31,6 +37,9 @@ public class PrestamoServicio {
     private ListaEsperaDAO listaEsperaDAO;
     private RenovacionDAO renovacionDAO;
     private NotificacionDAO notificacionDAO;
+    private final MultaDAO multaDAO = new MultaDAO();
+    private final PoliticaMultaDAO politicaMultaDAO = new PoliticaMultaDAO();
+    private final MultaServicio multaServicio = new MultaServicio();
     
     public PrestamoServicio(){
         this.prestamoDAO = new PrestamoDAO();
@@ -248,6 +257,45 @@ public class PrestamoServicio {
                 }
                 
                 LocalDate fechaDevolucion = LocalDate.now();
+                
+                int diasRetraso = multaServicio.calcularDiasRetraso(
+                        prestamoBloqueado.getFechaLimite(), fechaDevolucion);
+
+                if (diasRetraso < 0) {
+                    conexion.rollback();
+                    return false;
+                }
+
+                if (diasRetraso > 0) {
+                    PoliticaMulta politica = politicaMultaDAO.buscarActiva();
+
+                    if (politica == null || politica.getIdPolitica() <= 0) {
+                        conexion.rollback();
+                        return false;
+                    }
+
+                    BigDecimal monto = multaServicio.calcularMonto(diasRetraso, politica);
+
+                    if (monto == null) {
+                        conexion.rollback();
+                        return false;
+                    }
+
+                    if (monto.compareTo(BigDecimal.ZERO) > 0) {
+                        Multa multa = new Multa(
+                                idPrestamo,
+                                politica.getIdPolitica(),
+                                diasRetraso,
+                                monto,
+                                "PENDIENTE"
+                        );
+
+                        if (!multaDAO.registrar(multa, conexion)) {
+                            conexion.rollback();
+                            return false;
+                        }
+                    }
+                }
 
                 boolean prestamoActualizado = prestamoDAO.actualizarDevolucion(idPrestamo, fechaDevolucion, conexion);
 

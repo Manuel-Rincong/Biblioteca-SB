@@ -31,7 +31,7 @@ public class DevolucionesControlador {
         this.vista = vista;
 
         vista.configurarCambioSeleccion(e -> mostrarDetalle());
-        vista.configurarAcciones(null, e -> consultarPrestamos());
+        vista.configurarAcciones(e -> devolverPrestamo(), e -> consultarPrestamos());
 
         consultarPrestamos();
     }
@@ -125,6 +125,26 @@ public class DevolucionesControlador {
         }
     }   
 
+    private void devolverPrestamo() {
+        int indice = vista.getIndicePrestamo();
+
+        if (indice < 0 || indice >= prestamosPendientes.size()) {
+            vista.mostrarEstado("Selecciona un préstamo para devolver.");
+            return;
+        }
+
+        Prestamo prestamo = prestamosPendientes.get(indice);
+        boolean devuelto = prestamoServicio.devolver(prestamo.getIdPrestamo());
+
+        if (!devuelto) {
+            vista.mostrarEstado("No se pudo registrar la devolución.");
+            return;
+        }
+
+        vista.mostrarEstado("Devolución registrada correctamente.");
+        consultarPrestamos();
+    }
+    
     private String buscarNombreUsuario(long idUsuario) {
         for (Usuario usuario : usuarios) {
             if (usuario.getIdUsuario() == idUsuario) {
