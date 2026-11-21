@@ -41,7 +41,39 @@ public class ListaEsperaDAO {
         
         return consulta;
     }
-    
+    public ListaEspera buscarNotificadoPorRecurso(long idRecurso, Connection conexion)
+        throws SQLException {
+    String sql = "SELECT * FROM lista_espera "
+            + "WHERE id_recurso = ? AND estado = 'NOTIFICADO' "
+            + "AND fecha_vencimiento_aviso > CURRENT_TIMESTAMP "
+            + "ORDER BY fecha_inscripcion ASC, id_lista_espera ASC "
+            + "LIMIT 1 FOR UPDATE";
+
+    try (PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+        sentencia.setLong(1, idRecurso);
+
+        try (ResultSet resultado = sentencia.executeQuery()) {
+            if (resultado.next()) {
+                return convertirListaEspera(resultado);
+            }
+
+            return null;
+        }
+    }
+}
+
+public boolean marcarComoAtendido(long idListaEspera, Connection conexion)
+        throws SQLException {
+    String sql = "UPDATE lista_espera SET estado = 'ATENDIDO' "
+            + "WHERE id_lista_espera = ? AND estado = 'NOTIFICADO' "
+            + "AND fecha_vencimiento_aviso > CURRENT_TIMESTAMP";
+
+    try (PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+        sentencia.setLong(1, idListaEspera);
+        return sentencia.executeUpdate() > 0;
+    }
+}
+
     public boolean cancelar(long idListaEspera){
         return actualizarEstado(idListaEspera, "CANCELADO");
     }
