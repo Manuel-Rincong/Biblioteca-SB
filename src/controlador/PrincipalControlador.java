@@ -44,6 +44,7 @@ public class PrincipalControlador {
     private void abrirRecursos() {
     if (recursos == null || !recursos.isDisplayable()) {
         recursos = new Recursos();
+        new RecursosControlador(recursos);
     }
 
     recursos.setVisible(true);
