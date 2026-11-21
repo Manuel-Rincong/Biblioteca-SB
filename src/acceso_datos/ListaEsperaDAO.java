@@ -74,6 +74,17 @@ public boolean marcarComoAtendido(long idListaEspera, Connection conexion)
     }
 }
 
+    public int vencerAvisos(long idRecurso, Connection conexion) throws SQLException {
+        String sql = "UPDATE lista_espera SET estado = 'VENCIDO' "
+                + "WHERE id_recurso = ? AND estado = 'NOTIFICADO' "
+                + "AND fecha_vencimiento_aviso <= CURRENT_TIMESTAMP";
+
+        try (PreparedStatement sentencia = conexion.prepareStatement(sql)) {
+            sentencia.setLong(1, idRecurso);
+            return sentencia.executeUpdate();
+        }
+    }
+
     public boolean cancelar(long idListaEspera){
         return actualizarEstado(idListaEspera, "CANCELADO");
     }
