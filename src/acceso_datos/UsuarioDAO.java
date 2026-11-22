@@ -131,6 +131,35 @@ public class UsuarioDAO {
         }
     }
     
+    public Usuario buscarPorCorreo(String correo){
+      
+        String sql = "SELECT * FROM usuario WHERE correo = ?";
+        
+        Connection conexion = ConexionBD.obtenerConexion();
+        
+        if(conexion == null){
+            return null;
+        }
+        
+        try(conexion;
+            PreparedStatement sentencia  = conexion.prepareStatement(sql)){
+            
+            sentencia.setString(1, correo);
+            
+            ResultSet resultado = sentencia.executeQuery();
+            
+            if(resultado.next()){
+                return convertirUsuario(resultado);
+            }
+            
+            return null;
+            
+        }catch(SQLException e){
+            System.out.println("Error al buscar por el correo del usuario: "+e.getMessage());
+            return null;
+        }
+    }
+    
     public Usuario buscarPorId(long idUsuario){
         
         String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
