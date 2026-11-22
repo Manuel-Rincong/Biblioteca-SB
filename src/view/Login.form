@@ -27,19 +27,20 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
               <Component id="pnlIdentidad" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="pnlAcceso" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="pnlIdentidad" pref="477" max="32767" attributes="0"/>
-                  <Component id="pnlAcceso" pref="0" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="pnlIdentidad" pref="519" max="32767" attributes="0"/>
+                  <Component id="pnlAcceso" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -61,38 +62,19 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="lblMarca" min="-2" pref="336" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <Component id="pnlPresentacion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="229" max="32767" attributes="0"/>
+                  <EmptySpace min="0" pref="73" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Component id="lblMarca" min="-2" max="-2" attributes="0"/>
-                  <Component id="pnlPresentacion" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="60" max="32767" attributes="0"/>
-              </Group>
+              <Component id="pnlPresentacion" alignment="1" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblMarca">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="SansSerif" size="14" style="1"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="B I B L I O T E C A"/>
-          </Properties>
-        </Component>
         <Container class="javax.swing.JPanel" name="pnlPresentacion">
           <Properties>
             <Property name="opaque" type="boolean" value="false"/>
@@ -101,31 +83,46 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="69" pref="69" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="pnlLibros" min="-2" max="-2" attributes="0"/>
                           <Component id="lblFraseUno" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblFraseDos" min="-2" pref="197" max="-2" attributes="0"/>
-                          <Component id="lblDescripcionUno" min="-2" pref="197" max="-2" attributes="0"/>
-                          <Component id="lblDescripcionDos" min="-2" pref="197" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                                      <Component id="lblDescripcionDos" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="lblDescripcionUno" min="-2" pref="197" max="-2" attributes="0"/>
+                                  <Component id="lblFraseDos" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                              <Component id="lblMarca" alignment="1" min="-2" pref="126" max="-2" attributes="0"/>
+                              <Component id="pnlLibros" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
+                      <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="88" pref="88" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="lblMarca" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="pnlLibros" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="36" pref="36" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="lblFraseUno" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="2" pref="2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="lblFraseDos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="24" pref="24" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       <Component id="lblDescripcionUno" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                       <Component id="lblDescripcionDos" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -144,7 +141,7 @@
                           <Component id="pnlLibroRosado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
                           <Component id="pnlLibroDorado" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="8" pref="8" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Component id="pnlLibroNaranja" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -363,6 +360,17 @@
                 <Property name="text" type="java.lang.String" value="tu vida universitaria."/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JLabel" name="lblMarca">
+              <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="SansSerif" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="B I B L I O T E C A"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
@@ -381,16 +389,16 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="pnlFormulario" min="-2" pref="429" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="12" max="32767" attributes="0"/>
+                  <Component id="pnlFormulario" min="-2" pref="452" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="14" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <Component id="pnlFormulario" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  <Component id="pnlFormulario" min="-2" pref="518" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -412,27 +420,27 @@
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblCorreo" min="-2" pref="260" max="-2" attributes="0"/>
-                                  <Component id="txtCorreo" min="-2" pref="378" max="-2" attributes="0"/>
-                                  <Component id="lblContrasena" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
-                                  <Component id="txtContrasena" alignment="0" min="-2" pref="378" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblAcceso" min="-2" pref="130" max="-2" attributes="0"/>
                           </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="lblCorreo" min="-2" pref="260" max="-2" attributes="0"/>
+                                      <Component id="txtCorreo" min="-2" pref="378" max="-2" attributes="0"/>
+                                      <Component id="lblContrasena" alignment="0" min="-2" pref="206" max="-2" attributes="0"/>
+                                      <Component id="txtContrasena" alignment="0" min="-2" pref="378" max="-2" attributes="0"/>
+                                      <Component id="chkMostrarContrasena" alignment="0" min="-2" pref="132" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="51" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="chkMostrarContrasena" min="-2" pref="429" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
                               <Component id="btnIngresar" min="-2" pref="323" max="-2" attributes="0"/>
@@ -440,17 +448,12 @@
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="lblAyuda" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblMensaje" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblTitulo" min="-2" pref="214" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -462,7 +465,7 @@
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Component id="lblTitulo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="lblAyuda" min="-2" max="-2" attributes="0"/>
+                      <Component id="lblMensaje" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="lblCorreo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -471,13 +474,13 @@
                       <Component id="lblContrasena" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txtContrasena" min="-2" pref="38" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="chkMostrarContrasena" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                       <Component id="btnIngresar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="28" max="32767" attributes="0"/>
+                      <EmptySpace pref="51" max="32767" attributes="0"/>
                       <Component id="btnSalir" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -505,7 +508,7 @@
                 <Property name="text" type="java.lang.String" value="Iniciar sesi&#xf3;n"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="lblAyuda">
+            <Component class="javax.swing.JLabel" name="lblMensaje">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="SansSerif" size="13" style="0"/>

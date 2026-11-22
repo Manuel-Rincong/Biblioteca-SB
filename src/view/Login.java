@@ -65,7 +65,6 @@ public class Login extends javax.swing.JFrame {
     private void initComponents() {
 
         pnlIdentidad = new javax.swing.JPanel();
-        lblMarca = new javax.swing.JLabel();
         pnlPresentacion = new javax.swing.JPanel();
         pnlLibros = new javax.swing.JPanel();
         pnlLibroRosado = new javax.swing.JPanel();
@@ -81,11 +80,12 @@ public class Login extends javax.swing.JFrame {
         lblFraseDos = new javax.swing.JLabel();
         lblDescripcionUno = new javax.swing.JLabel();
         lblDescripcionDos = new javax.swing.JLabel();
+        lblMarca = new javax.swing.JLabel();
         pnlAcceso = new javax.swing.JPanel();
         pnlFormulario = new javax.swing.JPanel();
         lblAcceso = new javax.swing.JLabel();
         lblTitulo = new javax.swing.JLabel();
-        lblAyuda = new javax.swing.JLabel();
+        lblMensaje = new javax.swing.JLabel();
         lblCorreo = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JPasswordField();
@@ -101,10 +101,6 @@ public class Login extends javax.swing.JFrame {
         pnlIdentidad.setBackground(new java.awt.Color(197, 80, 121));
         pnlIdentidad.setBorder(javax.swing.BorderFactory.createEmptyBorder(40, 34, 36, 30));
         pnlIdentidad.setPreferredSize(new java.awt.Dimension(336, 580));
-
-        lblMarca.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
-        lblMarca.setForeground(new java.awt.Color(255, 255, 255));
-        lblMarca.setText("B I B L I O T E C A");
 
         pnlPresentacion.setOpaque(false);
 
@@ -141,8 +137,8 @@ public class Login extends javax.swing.JFrame {
         pnlLibroDorado.add(pnlLibroDoradoMarcaInferior, java.awt.BorderLayout.SOUTH);
 
         pnlLibroNaranja.setBackground(new java.awt.Color(235, 155, 102));
-        pnlLibroNaranja.setPreferredSize(new java.awt.Dimension(42, 86));
         pnlLibroNaranja.setBorder(javax.swing.BorderFactory.createEmptyBorder(14, 7, 12, 7));
+        pnlLibroNaranja.setPreferredSize(new java.awt.Dimension(42, 86));
         pnlLibroNaranja.setLayout(new java.awt.BorderLayout(0, 0));
 
         pnlLibroNaranjaMarcaSuperior.setBackground(new java.awt.Color(246, 210, 186));
@@ -164,7 +160,7 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(pnlLibroRosado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(pnlLibroDorado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(8, 8, 8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlLibroNaranja, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         pnlLibrosLayout.setVerticalGroup(
@@ -194,32 +190,47 @@ public class Login extends javax.swing.JFrame {
         lblDescripcionDos.setForeground(new java.awt.Color(255, 235, 242));
         lblDescripcionDos.setText("tu vida universitaria.");
 
+        lblMarca.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        lblMarca.setForeground(new java.awt.Color(255, 255, 255));
+        lblMarca.setText("B I B L I O T E C A");
+
         javax.swing.GroupLayout pnlPresentacionLayout = new javax.swing.GroupLayout(pnlPresentacion);
         pnlPresentacion.setLayout(pnlPresentacionLayout);
         pnlPresentacionLayout.setHorizontalGroup(
             pnlPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPresentacionLayout.createSequentialGroup()
-                .addGap(69, 69, 69)
+                .addGap(29, 29, 29)
                 .addGroup(pnlPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblFraseUno)
-                    .addComponent(lblFraseDos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDescripcionUno, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDescripcionDos, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(pnlPresentacionLayout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(pnlPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlPresentacionLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addComponent(lblDescripcionDos))
+                            .addComponent(lblDescripcionUno, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblFraseDos)))
+                    .addGroup(pnlPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pnlLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
         pnlPresentacionLayout.setVerticalGroup(
             pnlPresentacionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlPresentacionLayout.createSequentialGroup()
-                .addGap(88, 88, 88)
+                .addGap(80, 80, 80)
+                .addComponent(lblMarca)
+                .addGap(18, 18, 18)
                 .addComponent(pnlLibros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addComponent(lblFraseUno)
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblFraseDos)
-                .addGap(24, 24, 24)
+                .addGap(28, 28, 28)
                 .addComponent(lblDescripcionUno)
                 .addGap(6, 6, 6)
-                .addComponent(lblDescripcionDos))
+                .addComponent(lblDescripcionDos)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout pnlIdentidadLayout = new javax.swing.GroupLayout(pnlIdentidad);
@@ -227,18 +238,12 @@ public class Login extends javax.swing.JFrame {
         pnlIdentidadLayout.setHorizontalGroup(
             pnlIdentidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlIdentidadLayout.createSequentialGroup()
-                .addComponent(lblMarca, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(pnlIdentidadLayout.createSequentialGroup()
                 .addComponent(pnlPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 73, Short.MAX_VALUE))
         );
         pnlIdentidadLayout.setVerticalGroup(
             pnlIdentidadLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlIdentidadLayout.createSequentialGroup()
-                .addComponent(lblMarca)
-                .addComponent(pnlPresentacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(60, Short.MAX_VALUE))
+            .addComponent(pnlPresentacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pnlAcceso.setBackground(new java.awt.Color(255, 255, 255));
@@ -255,9 +260,9 @@ public class Login extends javax.swing.JFrame {
         lblTitulo.setForeground(new java.awt.Color(59, 40, 49));
         lblTitulo.setText("Iniciar sesión");
 
-        lblAyuda.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
-        lblAyuda.setForeground(new java.awt.Color(111, 85, 98));
-        lblAyuda.setText("Usa el correo registrado en la biblioteca.");
+        lblMensaje.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
+        lblMensaje.setForeground(new java.awt.Color(111, 85, 98));
+        lblMensaje.setText("Usa el correo registrado en la biblioteca.");
 
         lblCorreo.setFont(new java.awt.Font("SansSerif", 1, 13)); // NOI18N
         lblCorreo.setForeground(new java.awt.Color(59, 40, 49));
@@ -322,34 +327,30 @@ public class Login extends javax.swing.JFrame {
             .addGroup(pnlFormularioLayout.createSequentialGroup()
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFormularioLayout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(pnlFormularioLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addComponent(lblAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlFormularioLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnSalir)
+                            .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(chkMostrarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(0, 51, Short.MAX_VALUE))
             .addGroup(pnlFormularioLayout.createSequentialGroup()
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlFormularioLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(chkMostrarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFormularioLayout.createSequentialGroup()
                         .addGap(49, 49, 49)
                         .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFormularioLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(lblAyuda)
+                            .addComponent(lblMensaje)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFormularioLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addGap(34, 34, 34))
         );
         pnlFormularioLayout.setVerticalGroup(
             pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -359,7 +360,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(30, 30, 30)
                 .addComponent(lblTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblAyuda)
+                .addComponent(lblMensaje)
                 .addGap(38, 38, 38)
                 .addComponent(lblCorreo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -368,13 +369,13 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(lblContrasena)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(chkMostrarContrasena)
-                .addGap(27, 27, 27)
+                .addGap(36, 36, 36)
                 .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
                 .addComponent(btnSalir)
-                .addGap(21, 21, 21))
+                .addGap(26, 26, 26))
         );
 
         javax.swing.GroupLayout pnlAccesoLayout = new javax.swing.GroupLayout(pnlAcceso);
@@ -382,14 +383,14 @@ public class Login extends javax.swing.JFrame {
         pnlAccesoLayout.setHorizontalGroup(
             pnlAccesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAccesoLayout.createSequentialGroup()
-                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 429, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 14, Short.MAX_VALUE))
         );
         pnlAccesoLayout.setVerticalGroup(
             pnlAccesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAccesoLayout.createSequentialGroup()
-                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -398,16 +399,17 @@ public class Login extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(pnlIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, 0)
-                .addComponent(pnlAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(pnlAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlIdentidad, javax.swing.GroupLayout.DEFAULT_SIZE, 477, Short.MAX_VALUE)
-                    .addComponent(pnlAcceso, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addGap(0, 0, 0))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlIdentidad, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
+                    .addComponent(pnlAcceso, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -430,7 +432,6 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton btnSalir;
     private javax.swing.JCheckBox chkMostrarContrasena;
     private javax.swing.JLabel lblAcceso;
-    private javax.swing.JLabel lblAyuda;
     private javax.swing.JLabel lblContrasena;
     private javax.swing.JLabel lblCorreo;
     private javax.swing.JLabel lblDescripcionDos;
@@ -438,6 +439,7 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel lblFraseDos;
     private javax.swing.JLabel lblFraseUno;
     private javax.swing.JLabel lblMarca;
+    private javax.swing.JLabel lblMensaje;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlAcceso;
     private javax.swing.JPanel pnlFormulario;
