@@ -176,11 +176,11 @@ public class Login extends javax.swing.JFrame {
 
         lblFraseUno.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
         lblFraseUno.setForeground(new java.awt.Color(255, 255, 255));
-        lblFraseUno.setText("Tu biblioteca,");
+        lblFraseUno.setText("Tu biblioteca");
 
         lblFraseDos.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
         lblFraseDos.setForeground(new java.awt.Color(255, 255, 255));
-        lblFraseDos.setText("más cerca.");
+        lblFraseDos.setText("más cerca");
 
         lblDescripcionUno.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         lblDescripcionUno.setForeground(new java.awt.Color(255, 235, 242));
@@ -259,6 +259,7 @@ public class Login extends javax.swing.JFrame {
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(59, 40, 49));
         lblTitulo.setText("Iniciar sesión");
+        lblTitulo.setFocusable(false);
 
         lblMensaje.setFont(new java.awt.Font("SansSerif", 0, 13)); // NOI18N
         lblMensaje.setForeground(new java.awt.Color(111, 85, 98));
@@ -302,6 +303,7 @@ public class Login extends javax.swing.JFrame {
         btnIngresar.setFocusPainted(false);
         btnIngresar.setPreferredSize(new java.awt.Dimension(400, 46));
 
+        btnSalir.setBackground(new java.awt.Color(255, 204, 204));
         btnSalir.setFont(new java.awt.Font("SansSerif", 1, 12)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(172, 55, 64));
         btnSalir.setText("Salir");
@@ -339,7 +341,7 @@ public class Login extends javax.swing.JFrame {
                                 .addComponent(lblContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 206, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(txtContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(chkMostrarContrasena, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(0, 51, Short.MAX_VALUE))
+                .addGap(0, 19, Short.MAX_VALUE))
             .addGroup(pnlFormularioLayout.createSequentialGroup()
                 .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlFormularioLayout.createSequentialGroup()
@@ -347,7 +349,7 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(btnIngresar, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(pnlFormularioLayout.createSequentialGroup()
                         .addGap(98, 98, 98)
-                        .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(pnlFormularioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblMensaje)
                             .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -383,8 +385,8 @@ public class Login extends javax.swing.JFrame {
         pnlAccesoLayout.setHorizontalGroup(
             pnlAccesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlAccesoLayout.createSequentialGroup()
-                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 452, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 14, Short.MAX_VALUE))
+                .addComponent(pnlFormulario, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 32, Short.MAX_VALUE))
         );
         pnlAccesoLayout.setVerticalGroup(
             pnlAccesoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -424,8 +426,28 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     public static void main(String[] args) {
-        java.awt.EventQueue.invokeLater(() -> new Login().setVisible(true));
-    }
+    java.awt.EventQueue.invokeLater(() -> {
+        Login login = new Login();
+
+        controlador.AutenticacionControlador autenticacion =
+                new controlador.AutenticacionControlador();
+
+        controlador.LoginControlador control =
+                new controlador.LoginControlador(
+                        login,
+                        autenticacion,
+                        sesion -> javax.swing.JOptionPane.showMessageDialog(
+                                login,
+                                "Ingreso correcto.\nNombre: " + sesion.getNombre()
+                                        + "\nPerfil: " + sesion.getTipoUsuario(),
+                                "Inicio de sesión",
+                                javax.swing.JOptionPane.INFORMATION_MESSAGE
+                        )
+                );
+
+        control.mostrar();
+    });
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIngresar;
