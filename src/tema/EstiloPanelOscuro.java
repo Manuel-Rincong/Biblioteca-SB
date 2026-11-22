@@ -32,6 +32,7 @@ public class EstiloPanelOscuro implements EstiloPanel {
 
                 if (campo.getClientProperty("tema.cursorOriginal") == null) {
                     campo.putClientProperty("tema.cursorOriginal", campo.getCaretColor());
+                    campo.putClientProperty("tema.cursorGuardado", Boolean.TRUE);
                 }
 
                 campo.setCaretColor(new Color(235, 235, 235));
