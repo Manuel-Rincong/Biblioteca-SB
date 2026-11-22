@@ -44,6 +44,19 @@ public class Principal extends javax.swing.JFrame {
     btnConsultas.addActionListener(accion);
     }
    
+    public void configurarAccionTema(java.awt.event.ActionListener accion) {
+        btnCambiarTema.addActionListener(accion);
+        btnCambiarTema.setEnabled(accion != null);
+    }
+
+    public void actualizarTextoTema(boolean oscuro) {
+        if (oscuro) {
+            btnCambiarTema.setText("Modo claro");
+        } else {
+            btnCambiarTema.setText("Modo oscuro");
+        }
+    }
+    
     private void mostrarSeccion(String nombre, String descripcion) {
         lblSeccion.setText(nombre);
         txtDescripcion.setText(descripcion);
@@ -61,6 +74,7 @@ public class Principal extends javax.swing.JFrame {
         pnlEncabezado = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         lblSubtitulo = new javax.swing.JLabel();
+        btnCambiarTema = new javax.swing.JButton();
         pnlContenido = new javax.swing.JPanel();
         pnlOpciones = new javax.swing.JPanel();
         btnUsuarios = new javax.swing.JButton();
@@ -82,17 +96,45 @@ public class Principal extends javax.swing.JFrame {
 
         pnlEncabezado.setBackground(new java.awt.Color(0, 0, 0));
         pnlEncabezado.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 28, 22, 28));
-        pnlEncabezado.setLayout(new java.awt.BorderLayout(0, 8));
 
         lblTitulo.setFont(new java.awt.Font("SansSerif", 1, 25)); // NOI18N
         lblTitulo.setForeground(new java.awt.Color(255, 255, 255));
         lblTitulo.setText("SISTEMA DE BIBLIOTECA");
-        pnlEncabezado.add(lblTitulo, java.awt.BorderLayout.NORTH);
 
         lblSubtitulo.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         lblSubtitulo.setForeground(new java.awt.Color(202, 223, 231));
         lblSubtitulo.setText("Gestión de libros y equipos para estudiantes y docentes");
-        pnlEncabezado.add(lblSubtitulo, java.awt.BorderLayout.SOUTH);
+
+        btnCambiarTema.setBackground(new java.awt.Color(0, 0, 0));
+        btnCambiarTema.setForeground(new java.awt.Color(255, 255, 255));
+        btnCambiarTema.setText("ModoOscuro");
+        btnCambiarTema.addActionListener(this::btnCambiarTemaActionPerformed);
+
+        javax.swing.GroupLayout pnlEncabezadoLayout = new javax.swing.GroupLayout(pnlEncabezado);
+        pnlEncabezado.setLayout(pnlEncabezadoLayout);
+        pnlEncabezadoLayout.setHorizontalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnCambiarTema, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 594, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        pnlEncabezadoLayout.setVerticalGroup(
+            pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlEncabezadoLayout.createSequentialGroup()
+                .addGroup(pnlEncabezadoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblTitulo)
+                    .addComponent(btnCambiarTema))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblSubtitulo)
+                .addContainerGap())
+        );
 
         pnlContenido.setBackground(new java.awt.Color(243, 246, 249));
         pnlContenido.setBorder(javax.swing.BorderFactory.createEmptyBorder(22, 28, 18, 28));
@@ -277,32 +319,28 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 656, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(pnlEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addContainerGap()))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(pnlContenido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(pnlEncabezado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, 0)
-                    .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(pnlEncabezado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlContenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(pnlPie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -344,6 +382,10 @@ public class Principal extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void btnCambiarTemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCambiarTemaActionPerformed
+
+    }//GEN-LAST:event_btnCambiarTemaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -374,6 +416,7 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCambiarTema;
     private javax.swing.JButton btnConsultas;
     private javax.swing.JButton btnDevoluciones;
     private javax.swing.JButton btnListaEspera;
