@@ -30,7 +30,7 @@ public class EstiloPanelOscuro implements EstiloPanel {
             if (elemento instanceof JTextComponent) {
                 JTextComponent campo = (JTextComponent) elemento;
 
-                if (campo.getClientProperty("tema.cursorOriginal") == null) {
+                if (!Boolean.TRUE.equals(campo.getClientProperty("tema.cursorGuardado"))) {
                     campo.putClientProperty("tema.cursorOriginal", campo.getCaretColor());
                     campo.putClientProperty("tema.cursorGuardado", Boolean.TRUE);
                 }

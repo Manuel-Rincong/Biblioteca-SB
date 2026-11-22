@@ -10,9 +10,11 @@ import view.Renovaciones;
 import view.ListaDeEspera;
 import view.Notificaciones;
 import view.Consultas;
+import tema.GestorTema;
 
 public class PrincipalControlador {
     private Usuarios usuarios;
+    private final GestorTema gestorTema = new GestorTema();
     private Recursos recursos;
     private Prestamos prestamos;
     private Devoluciones devoluciones;
@@ -30,6 +32,13 @@ public class PrincipalControlador {
         principal.configurarAccionListaDeEspera(e -> abrirListaDeEspera());
         principal.configurarAccionNotificaciones(e -> abrirNotificaciones());
         principal.configurarAccionConsultas(e -> abrirConsultas());
+        principal.configurarAccionTema(e -> {
+    gestorTema.alternarTema();
+    principal.actualizarTextoTema(gestorTema.esOscuro());
+});
+
+gestorTema.aplicar(principal);
+principal.actualizarTextoTema(gestorTema.esOscuro());
     }
 
     private void abrirUsuarios() {
