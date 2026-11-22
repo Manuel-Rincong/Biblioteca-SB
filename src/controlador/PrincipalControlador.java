@@ -46,9 +46,11 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
             usuarios = new Usuarios();
             new UsuariosControlador(usuarios);
         }
+
+        gestorTema.aplicar(usuarios);
         usuarios.setVisible(true);
         usuarios.toFront();
-    }  
+    }
     
     private void abrirRecursos() {
     if (recursos == null || !recursos.isDisplayable()) {
@@ -56,6 +58,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new RecursosControlador(recursos);
     }
 
+    gestorTema.aplicar(recursos);
     recursos.setVisible(true);
     recursos.toFront();
     }
@@ -66,6 +69,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new PrestamosControlador(prestamos);
     }
 
+    gestorTema.aplicar(prestamos);
     prestamos.setVisible(true);
     prestamos.toFront();
     }
@@ -76,6 +80,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new DevolucionesControlador(devoluciones);
     }
 
+    gestorTema.aplicar(devoluciones);
     devoluciones.setVisible(true);
     devoluciones.toFront();
     } 
@@ -86,6 +91,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new RenovacionesControlador(renovaciones);
     }
 
+    gestorTema.aplicar(renovaciones);
     renovaciones.setVisible(true);
     renovaciones.toFront();
     } 
@@ -96,6 +102,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new ListaDeEsperaControlador(ListaDeEspera);
     }
 
+    gestorTema.aplicar(ListaDeEspera);
     ListaDeEspera.setVisible(true);
     ListaDeEspera.toFront();
     } 
@@ -106,6 +113,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new NotificacionesControlador(Notificaciones);
     }
 
+    gestorTema.aplicar(Notificaciones);
     Notificaciones.setVisible(true);
     Notificaciones.toFront();
     } 
@@ -116,6 +124,7 @@ principal.actualizarTextoTema(gestorTema.esOscuro());
         new ConsultasControlador(Consultas);
     }
 
+    gestorTema.aplicar(Consultas);
     Consultas.setVisible(true);
     Consultas.toFront();
     } 
