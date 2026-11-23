@@ -10,12 +10,30 @@ import modelo.PoliticaMulta;
 
 public class MultaServicio {
     private MultaDAO multaDAO;
-    private CalculadoraMulta calculadoraMulta;
     
     
     public MultaServicio(){
         this.multaDAO = new MultaDAO();
-        this.calculadoraMulta = new CalculadoraMulta(new MultaPorDia());
+    }
+    
+    private MultaStrategy obtenerEstrategia(PoliticaMulta politica) {
+        if (politica == null || politica.getTipoEstrategia() == null) {
+            return null;
+        }
+
+        switch (politica.getTipoEstrategia()) {
+            case "POR_DIA":
+                return new MultaPorDia();
+
+            case "FIJA":
+                return new MultaFija();
+
+            case "PROGRESIVA":
+                return new MultaProgresiva();
+
+            default:
+                return null;
+        }
     }
     
     public int calcularDiasRetraso(LocalDate fechaLimite, LocalDate fechaDevolucion) {
@@ -31,30 +49,60 @@ public class MultaServicio {
 
         return (int) Math.max(0, dias);
     }
+    
+    public BigDecimal calcularMonto(int diasRetraso, PoliticaMulta politica, MultaStrategy estrategia) {
 
-    public BigDecimal calcularMonto(int diasRetraso, PoliticaMulta politica){
-
-        if(diasRetraso < 0){
+        if (diasRetraso < 0) {
             return null;
         }
 
-        if(diasRetraso == 0){
+        if (politica == null || !politica.isActiva() || estrategia == null) {
+            return null;
+        }
+
+        if (politica.getDiasGracia() < 0
+                || (politica.getMultaMaxima() != null
+                && politica.getMultaMaxima().compareTo(BigDecimal.ZERO) < 0)) {
+            return null;
+        }
+
+        if (!(estrategia instanceof MultaProgresiva)) {
+            if (politica.getValorPorDia() == null
+                    || politica.getValorPorDia().compareTo(BigDecimal.ZERO) < 0) {
+                return null;
+            }
+        }
+
+        return new CalculadoraMulta(estrategia).calcular(politica, diasRetraso);
+    }
+    
+    public BigDecimal calcularMonto(int diasRetraso, PoliticaMulta politica) {
+
+        if (diasRetraso < 0) {
+            return null;
+        }
+
+        if (diasRetraso == 0) {
             return BigDecimal.ZERO;
         }
 
-        if(politica == null || !politica.isActiva()){
+        if (politica == null || !politica.isActiva()) {
             return null;
         }
 
-        if(politica.getDiasGracia() < 0
-                || politica.getValorPorDia() == null
-                || politica.getValorPorDia().compareTo(BigDecimal.ZERO) < 0
+        if (politica.getDiasGracia() < 0
                 || (politica.getMultaMaxima() != null
-                && politica.getMultaMaxima().compareTo(BigDecimal.ZERO) < 0)){
+                && politica.getMultaMaxima().compareTo(BigDecimal.ZERO) < 0)) {
             return null;
         }
 
-        return calculadoraMulta.calcular(politica, diasRetraso);
+        MultaStrategy estrategia = obtenerEstrategia(politica);
+
+        if (estrategia == null) {
+            return null;
+        }
+
+        return calcularMonto(diasRetraso, politica, estrategia);
     }
     
     public boolean registrar(Multa multa){

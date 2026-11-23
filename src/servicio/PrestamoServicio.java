@@ -268,7 +268,9 @@ public class PrestamoServicio {
                 }
 
                 if (diasRetraso > 0) {
-                    PoliticaMulta politica = politicaMultaDAO.buscarActiva();
+                    PoliticaMulta politica = politicaMultaDAO.buscarActivaPorTipoRecurso(
+                        recurso.getIdTipoRecurso()
+                    );
 
                     if (politica == null || politica.getIdPolitica() <= 0) {
                         conexion.rollback();

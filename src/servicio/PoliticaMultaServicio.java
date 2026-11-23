@@ -13,8 +13,30 @@ public class PoliticaMultaServicio {
         this.politicaMultaDAO = new PoliticaMultaDAO();
     }
     
+    public PoliticaMulta buscarActivaPorTipoRecurso(long idTipoRecurso) {
+        if (idTipoRecurso <= 0) {
+            return null;
+        }
+
+        return politicaMultaDAO.buscarActivaPorTipoRecurso(idTipoRecurso);
+    }
+    
+    private boolean estrategiaValida(String tipoEstrategia) {
+        return "POR_DIA".equals(tipoEstrategia)
+                ||"FIJA".equals(tipoEstrategia)
+                || "PROGRESIVA".equals(tipoEstrategia);
+    }
+    
     public boolean registrar(PoliticaMulta politicaMulta){
-        if(politicaMulta == null){
+        if (politicaMulta == null) {
+            return false;
+        }
+
+        if (politicaMulta.getIdTipoRecurso() <= 0) {
+            return false;
+        }
+        
+        if (!estrategiaValida(politicaMulta.getTipoEstrategia())) {
             return false;
         }
         
@@ -50,7 +72,15 @@ public class PoliticaMultaServicio {
     }
     
     public boolean actualizar(PoliticaMulta politicaMulta){
-        if(politicaMulta == null){
+        if (politicaMulta == null) {
+            return false;
+        }
+
+        if (politicaMulta.getIdTipoRecurso() <= 0) {
+            return false;
+        }
+        
+        if (!estrategiaValida(politicaMulta.getTipoEstrategia())) {
             return false;
         }
         

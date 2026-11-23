@@ -85,43 +85,66 @@ public class DevolucionesControlador {
     }
 
     private void mostrarDetalle() {
-    int indice = vista.getIndicePrestamo();
+        int indice = vista.getIndicePrestamo();
 
-    if (indice < 0 || indice >= prestamosPendientes.size()) {
-        return;
-    }
+        if (indice < 0 || indice >= prestamosPendientes.size()) {
+            return;
+        }
 
-    Prestamo prestamo = prestamosPendientes.get(indice);
-    LocalDate fechaDevolucion = LocalDate.now();
+        Prestamo prestamo = prestamosPendientes.get(indice);
+        LocalDate fechaDevolucion = LocalDate.now();
 
-    vista.mostrarDatosPrestamo(
+        vista.mostrarDatosPrestamo(
             buscarNombreUsuario(prestamo.getIdUsuario()),
             buscarNombreRecurso(prestamo.getIdRecurso()),
             prestamo.getFechaLimite()
-    );
+        );
 
-    vista.mostrarFechaDevolucion(fechaDevolucion);
+        vista.mostrarFechaDevolucion(fechaDevolucion);
 
-    int diasRetraso = multaServicio.calcularDiasRetraso(
-            prestamo.getFechaLimite(), fechaDevolucion);
+        int diasRetraso = multaServicio.calcularDiasRetraso(
+            prestamo.getFechaLimite(),
+            fechaDevolucion
+        );
 
-    if (diasRetraso < 0) {
-        vista.mostrarEstado("No se pudieron calcular los días de retraso.");
-        return;
-    }
+        if (diasRetraso < 0) {
+            vista.mostrarEstado("No se pudieron calcular los días de retraso.");
+            return;
+        }
 
-    PoliticaMulta politica = null;
+        PoliticaMulta politica = null;
 
-    if (diasRetraso > 0) {
-        politica = politicaServicio.buscarActiva();
-    }
+        if (diasRetraso > 0) {
+            Recurso recurso = recursoServicio.buscarPorId(
+                prestamo.getIdRecurso()
+            );
 
-    BigDecimal monto = multaServicio.calcularMonto(diasRetraso, politica);
+            if (recurso == null) {
+                vista.mostrarEstado("No se pudo obtener el recurso del préstamo.");
+                return;
+            }
 
-    vista.mostrarResultado(diasRetraso, monto);
+            politica = politicaServicio.buscarActivaPorTipoRecurso(
+                recurso.getIdTipoRecurso()
+            );
 
-    if (monto == null) {
-        vista.mostrarEstado("No se pudo obtener una política de multa válida.");
+            if (politica == null) {
+                vista.mostrarEstado(
+                    "No existe una política activa para este tipo de recurso."
+                );
+                return;
+            }
+        }
+
+        BigDecimal monto = multaServicio.calcularMonto(
+            diasRetraso,
+            politica
+        );
+
+        vista.mostrarResultado(diasRetraso, monto);
+
+        if (monto == null) {
+            vista.mostrarEstado("No se pudo calcular una multa válida.");
         }
     }   
 

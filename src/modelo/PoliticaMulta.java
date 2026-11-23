@@ -10,6 +10,8 @@ public class PoliticaMulta {
     private int diasGracia = 0;
     private BigDecimal multaMaxima;
     private boolean activa = true;
+    private String tipoEstrategia = "POR_DIA";
+    private long idTipoRecurso;
 
     public PoliticaMulta(String nombre, BigDecimal valorPorDia) {
         this.nombre = nombre;
@@ -21,6 +23,23 @@ public class PoliticaMulta {
         this.valorPorDia = valorPorDia;
         this.multaMaxima = multaMaxima;
     }
+
+    public long getIdTipoRecurso() {
+        return idTipoRecurso;
+    }
+
+    public void setIdTipoRecurso(long idTipoRecurso) {
+        this.idTipoRecurso = idTipoRecurso;
+    }
+    
+    public String getTipoEstrategia() {
+        return tipoEstrategia;
+    }
+
+    public void setTipoEstrategia(String tipoEstrategia) {
+        this.tipoEstrategia = tipoEstrategia;
+    }
+    
     
 
     public long getIdPolitica() {
