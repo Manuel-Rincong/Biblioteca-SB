@@ -36,7 +36,7 @@ public class PoliticaMultaDAO {
         
         String sql = "SELECT * FROM politica_multa WHERE activa = TRUE";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -63,7 +63,7 @@ public class PoliticaMultaDAO {
         
         String sql = "UPDATE politica_multa SET activa = FALSE WHERE id_politica = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -87,7 +87,7 @@ public class PoliticaMultaDAO {
         
         String sql = "UPDATE politica_multa SET nombre = ?, dias_gracia = ?, valor_por_dia = ?, multa_maxima = ?, activa = ?, tipo_estrategia = ?, id_tipo_recurso = ? WHERE id_politica = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -117,7 +117,7 @@ public class PoliticaMultaDAO {
         
         String sql = "SELECT * FROM politica_multa";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -148,7 +148,7 @@ public class PoliticaMultaDAO {
 
         String sql = "SELECT * FROM politica_multa WHERE activa = TRUE AND id_tipo_recurso = ?";
 
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
 
         if (conexion == null) {
             return null;
@@ -177,7 +177,7 @@ public class PoliticaMultaDAO {
         
         String sql = "SELECT * FROM politica_multa WHERE id_politica = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -206,7 +206,7 @@ public class PoliticaMultaDAO {
         
         String sql = "INSERT INTO politica_multa (nombre, dias_gracia, valor_por_dia, multa_maxima, tipo_estrategia, id_tipo_recurso) VALUES (?, ?, ?, ?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;

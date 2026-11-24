@@ -49,7 +49,7 @@ public class RecursoDAO {
 
         String sql = "UPDATE recurso SET disponible = ? WHERE id_recurso = ?";
 
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
 
         if(conexion == null){
             return false;
@@ -73,7 +73,7 @@ public class RecursoDAO {
         
         String sql = "UPDATE recurso SET activo = FALSE WHERE id_recurso = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -96,7 +96,7 @@ public class RecursoDAO {
         
         String sql = "UPDATE recurso SET identificador = ?, nombre = ?, id_tipo_recurso = ?, descripcion = ?, disponible = ?, activo = ? WHERE id_recurso = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -126,7 +126,7 @@ public class RecursoDAO {
         
         String sql = "SELECT * FROM recurso";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -178,7 +178,7 @@ public class RecursoDAO {
         
         String sql = "SELECT * FROM recurso WHERE id_recurso = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -207,7 +207,7 @@ public class RecursoDAO {
         
         String sql = "INSERT INTO recurso (identificador, nombre, id_tipo_recurso, descripcion) VALUES (?, ?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;

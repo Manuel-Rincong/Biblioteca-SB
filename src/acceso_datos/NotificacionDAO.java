@@ -35,7 +35,7 @@ public class NotificacionDAO {
         
         String sql = "UPDATE notificacion SET leida = TRUE WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -58,7 +58,7 @@ public class NotificacionDAO {
         
         String sql = "UPDATE notificacion SET leida = TRUE WHERE id_notificacion = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -81,7 +81,7 @@ public class NotificacionDAO {
         
         String sql = "SELECT * FROM notificacion WHERE id_usuario = ? AND leida = FALSE";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -114,7 +114,7 @@ public class NotificacionDAO {
         
         String sql = "SELECT * FROM notificacion WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -174,7 +174,7 @@ public class NotificacionDAO {
         
         String sql = "INSERT INTO notificacion (id_usuario, mensaje, id_lista_espera) VALUES(?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;

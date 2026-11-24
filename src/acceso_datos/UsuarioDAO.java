@@ -31,7 +31,7 @@ public class UsuarioDAO {
         
         String sql = "UPDATE usuario SET activo = FALSE WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -54,7 +54,7 @@ public class UsuarioDAO {
         
         String sql = "UPDATE usuario SET identificacion = ?, nombre = ?, correo = ?, id_tipo_usuario = ?, activo = ? WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -82,7 +82,7 @@ public class UsuarioDAO {
         
         String sql = "SELECT * FROM usuario";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -135,7 +135,7 @@ public class UsuarioDAO {
       
         String sql = "SELECT * FROM usuario WHERE correo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -164,7 +164,7 @@ public class UsuarioDAO {
         
         String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -193,7 +193,7 @@ public class UsuarioDAO {
         
         String sql = "INSERT INTO usuario (identificacion, nombre, correo, id_tipo_usuario) VALUES (?, ?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;

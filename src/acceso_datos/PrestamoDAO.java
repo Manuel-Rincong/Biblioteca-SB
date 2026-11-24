@@ -79,7 +79,7 @@ public class PrestamoDAO {
         
         String sql = "UPDATE prestamo SET fecha_devolucion = ?, estado = 'DEVUELTO' WHERE id_prestamo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -120,7 +120,7 @@ public class PrestamoDAO {
         
         String sql = "UPDATE prestamo SET estado = ? WHERE id_prestamo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -144,7 +144,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT * FROM prestamo WHERE estado = 'ACTIVO' AND fecha_limite < CURRENT_DATE";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -197,7 +197,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT COUNT(*) FROM prestamo WHERE id_usuario = ? AND estado = 'ACTIVO'";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return (-1);
@@ -226,7 +226,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT * FROM prestamo WHERE id_recurso = ? AND estado = 'ACTIVO' LIMIT 1";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -255,7 +255,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT * FROM prestamo WHERE id_usuario = ? AND estado = 'ACTIVO'";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -287,7 +287,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT * FROM prestamo WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -320,7 +320,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT * FROM prestamo";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -395,7 +395,7 @@ public class PrestamoDAO {
         
         String sql = "SELECT * FROM prestamo WHERE id_prestamo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -452,7 +452,7 @@ public class PrestamoDAO {
         
         String sql = "INSERT INTO prestamo (id_usuario, id_recurso, fecha_prestamo, fecha_limite, fecha_devolucion, renovaciones_realizadas, estado) VALUES (?, ?, ?, ?, ?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;

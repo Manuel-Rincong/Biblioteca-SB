@@ -108,7 +108,7 @@ public boolean marcarComoAtendido(long idListaEspera, Connection conexion)
         
         String sql = "UPDATE lista_espera SET estado = ? WHERE id_lista_espera = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -155,7 +155,7 @@ public boolean marcarComoAtendido(long idListaEspera, Connection conexion)
         
         String sql = "SELECT * FROM lista_espera WHERE id_recurso = ? AND estado = 'ESPERA' ORDER BY fecha_inscripcion ASC LIMIT 1";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -184,7 +184,7 @@ public boolean marcarComoAtendido(long idListaEspera, Connection conexion)
         
         String sql = "SELECT * FROM lista_espera WHERE id_recurso = ? ORDER BY fecha_inscripcion ASC";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -216,7 +216,7 @@ public boolean marcarComoAtendido(long idListaEspera, Connection conexion)
         
         String sql = "INSERT INTO lista_espera (id_usuario, id_recurso) VALUES (?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;

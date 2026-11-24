@@ -33,7 +33,7 @@ public class RenovacionDAO {
         
         String sql = "SELECT COUNT(*) FROM renovacion WHERE id_prestamo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return (-1);
@@ -62,7 +62,7 @@ public class RenovacionDAO {
         
         String sql = "SELECT * FROM renovacion WHERE id_prestamo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -113,7 +113,7 @@ public class RenovacionDAO {
         
         String sql = "INSERT INTO renovacion (id_prestamo, fecha_limite_anterior, nueva_fecha_limite) VALUES (?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;

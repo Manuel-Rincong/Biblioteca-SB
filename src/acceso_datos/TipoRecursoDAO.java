@@ -28,7 +28,7 @@ public class TipoRecursoDAO {
         
         String sql = "UPDATE tipo_recurso SET activo = FALSE WHERE id_tipo_recurso = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -51,7 +51,7 @@ public class TipoRecursoDAO {
         
         String sql = "UPDATE tipo_recurso SET nombre = ?, descripcion = ?, activo = ? WHERE id_tipo_recurso = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -77,7 +77,7 @@ public class TipoRecursoDAO {
         
         String sql = "SELECT * FROM tipo_recurso";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -107,7 +107,7 @@ public class TipoRecursoDAO {
         
         String sql = "SELECT * FROM tipo_recurso WHERE id_tipo_recurso = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -136,7 +136,7 @@ public class TipoRecursoDAO {
         
         String sql = "INSERT INTO tipo_recurso (nombre, descripcion) VALUES (?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;

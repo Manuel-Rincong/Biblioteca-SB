@@ -56,7 +56,7 @@ public class ReglaPrestamoDAO {
         
         String sql = "SELECT * FROM regla_prestamo WHERE id_tipo_usuario = ? AND id_tipo_recurso = ? AND activa = TRUE";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -86,7 +86,7 @@ public class ReglaPrestamoDAO {
         
         String sql = "UPDATE regla_prestamo SET activa = FALSE WHERE id_regla = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -109,7 +109,7 @@ public class ReglaPrestamoDAO {
         
         String sql = "UPDATE regla_prestamo SET id_tipo_usuario = ?, id_tipo_recurso = ?, plazo_dias = ?, limite_prestamos = ?,  max_renovaciones = ?, activa = ? WHERE id_regla = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -138,7 +138,7 @@ public class ReglaPrestamoDAO {
         
         String sql = "SELECT * FROM regla_prestamo";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -169,7 +169,7 @@ public class ReglaPrestamoDAO {
         
         String sql = "SELECT * FROM regla_prestamo WHERE id_regla = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -198,7 +198,7 @@ public class ReglaPrestamoDAO {
         
         String sql = "INSERT INTO regla_prestamo (id_tipo_usuario, id_tipo_recurso, plazo_dias, limite_prestamos, max_renovaciones) VALUES (?, ?, ?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;

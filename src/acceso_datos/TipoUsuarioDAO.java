@@ -28,7 +28,7 @@ public class TipoUsuarioDAO {
         
         String sql = "UPDATE tipo_usuario SET activo = FALSE WHERE id_tipo_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -51,7 +51,7 @@ public class TipoUsuarioDAO {
         
         String sql = "UPDATE tipo_usuario SET nombre = ?, limite_prestamos = ?, activo = ? WHERE id_tipo_usuario = ? ";
         
-        Connection conexion  = ConexionBD.obtenerConexion();
+        Connection conexion  = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -78,7 +78,7 @@ public class TipoUsuarioDAO {
         
         String sql = "INSERT INTO tipo_usuario (nombre, limite_prestamos) VALUES (?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return false;
@@ -102,7 +102,7 @@ public class TipoUsuarioDAO {
     public TipoUsuario buscarPorId(long idTipoUsuario){
         String sql = "SELECT * FROM tipo_usuario WHERE id_tipo_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if (conexion == null){
             return null;
@@ -131,7 +131,7 @@ public class TipoUsuarioDAO {
         
         String sql = "SELECT * FROM tipo_usuario";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;

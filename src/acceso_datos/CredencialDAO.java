@@ -27,7 +27,7 @@ public class CredencialDAO {
         
         String sql = "UPDATE credencial SET activo = FALSE WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -50,7 +50,7 @@ public class CredencialDAO {
         
         String sql = "UPDATE credencial SET contrasena_hash = ? WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -74,7 +74,7 @@ public class CredencialDAO {
         
         String sql = "SELECT * FROM credencial WHERE id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -107,7 +107,7 @@ public class CredencialDAO {
         
         String sql = "INSERT INTO credencial (id_usuario, contrasena_hash, activo) VALUES (?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;

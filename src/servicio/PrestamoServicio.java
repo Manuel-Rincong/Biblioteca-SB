@@ -105,7 +105,7 @@ public class PrestamoServicio {
             return false;
         }
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -212,7 +212,7 @@ public class PrestamoServicio {
             return false;
         }
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -361,7 +361,7 @@ public class PrestamoServicio {
             return false;
         }
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
 
         if(conexion == null){
             return false;
@@ -471,7 +471,7 @@ public class PrestamoServicio {
             return false;
         }
 
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
 
         if (conexion == null) {
             return false;
@@ -515,7 +515,7 @@ public class PrestamoServicio {
             return false;
         }
 
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
 
         if(conexion == null){
             return false;

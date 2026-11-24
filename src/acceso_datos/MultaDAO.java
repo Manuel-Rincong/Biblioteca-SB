@@ -34,7 +34,7 @@ public class MultaDAO {
         
         String sql = "UPDATE multa SET estado = ? WHERE id_multa = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;
@@ -58,7 +58,7 @@ public class MultaDAO {
         
         String sql = "SELECT multa.* FROM multa INNER JOIN prestamo ON multa.id_prestamo = prestamo.id_prestamo WHERE prestamo.id_usuario = ? AND multa.estado = 'PENDIENTE'";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -90,7 +90,7 @@ public class MultaDAO {
         
         String sql = "SELECT multa.* FROM multa INNER JOIN prestamo ON multa.id_prestamo = prestamo.id_prestamo WHERE prestamo.id_usuario = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -122,7 +122,7 @@ public class MultaDAO {
         
         String sql = "SELECT * FROM multa WHERE id_prestamo = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -154,7 +154,7 @@ public class MultaDAO {
         
         String sql = "SELECT * FROM multa WHERE id_multa = ?";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return null;
@@ -200,7 +200,7 @@ public class MultaDAO {
         
         String sql = "INSERT INTO multa (id_prestamo, id_politica, dias_retraso, monto_total, estado) VALUES (?, ?, ?, ?, ?)";
         
-        Connection conexion = ConexionBD.obtenerConexion();
+        Connection conexion = ConexionBD.getInstancia().obtenerConexion();
         
         if(conexion == null){
             return false;

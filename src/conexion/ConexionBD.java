@@ -1,3 +1,4 @@
+
 package conexion;
 
 import java.sql.Connection;
@@ -6,27 +7,28 @@ import java.sql.SQLException;
 
 public class ConexionBD {
 
-    private static final String URL = "jdbc:postgresql://aws-0-us-east-2.pooler.supabase.com:5432/postgres?user=postgres.affobcpntqbxcxxodvtn&password=--2Biblioteca2--";
-    private static final String USUARIO = "postgres.affobcpntqbxcxxodvtn";
-    private static final String CONTRASENA = "--2Biblioteca2--";
+    private static ConexionBD instancia;
 
-    public static Connection obtenerConexion() {
+    private final String URL = "jdbc:postgresql://aws-0-us-east-2.pooler.supabase.com:5432/postgres?user=postgres.affobcpntqbxcxxodvtn&password=--2Biblioteca2--";
+    private final String USUARIO = "postgres.affobcpntqbxcxxodvtn";
+    private final String PASSWORD = "--2Biblioteca2--";
 
+    private ConexionBD() {
+    }
+
+    public static synchronized ConexionBD getInstancia() {
+        if (instancia == null) {
+            instancia = new ConexionBD();
+        }
+
+        return instancia;
+    }
+
+    public Connection obtenerConexion() {
         try {
-            Connection conexion = DriverManager.getConnection(
-                URL,
-                USUARIO,
-                CONTRASENA
-            );
-
-            System.out.println("Conexion exitosa con Supabase");
-            return conexion;
-
+            return DriverManager.getConnection(URL, USUARIO, PASSWORD);
         } catch (SQLException e) {
-
-            System.out.println("Error al conectar con la base de datos:");
-            System.out.println(e.getMessage());
-
+            System.out.println("Error de conexión: " + e.getMessage());
             return null;
         }
     }
